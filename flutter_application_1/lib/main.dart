@@ -12,19 +12,20 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          toolbarHeight: 400,
+          //backgroundColor: const Color.fromARGB(255, 241, 243, 239),
+          toolbarHeight: 389,
+
           flexibleSpace: Image.asset(
-            'assets/images/hh.png',
+            'assets/images/logo2.png',
             fit: BoxFit.cover,
           ),
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(
+                height: 30,
+              ),
               const Text('Willkommen bei Iron Fit',
                   style: TextStyle(
                       fontSize: 24,
