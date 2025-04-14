@@ -15,6 +15,7 @@ class _MainAppState extends State<MainApp> {
     SettingsPage(),
   ];
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
