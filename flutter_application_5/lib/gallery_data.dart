@@ -1,52 +1,52 @@
 List<GalleryItem> galleryData = [
   GalleryItem(
-    imageTitle: 'Bunter Basketball',
+    imageTitle: 'Ein kleiner Lauf',
     imageDate: '03.06.2023',
     imageDescription:
-        'Ein farbenfrohes Basketballfeld im Freien. Im Zentrum steht ein Basketballkorb, dessen weißes Netz im leichten Wind schaukelt. Die Farben des Spielfelds leuchten unter der warmen Abendsonne. Vor vielen Jahren, während eines Sommerabends, trafen sich hier Freunde zu einem unvergesslichen Spiel, bei dem die Sieger den Sonnenuntergang bejubelten.',
-    imagePath: 'assets/images/download-1.jpg',
+        'Laufen ist einfach: Die Schuhe an, einen Schritt vor den anderen und losjoggen. Dafür sind wir alle gemacht. Nicht zum Sitzen, nicht zum Stehen, nein, zum Laufen sind wir geboren! Da Laufen zwar einfach, besonders der Einstieg ins Joggen aber nicht immer leicht ist, stehe ich – Jan Fitschen – euch bei euren ersten Schritten in ein gesünderes, fitteres und glücklicheres Leben zur Seite.',
+    imagePath: 'assets/images/download-8.jpg',
   ),
   GalleryItem(
-    imageTitle: 'Adrenalin pur!',
+    imageTitle: 'Tischtennis!',
     imageDate: '14.07.2020',
     imageDescription:
-        'Ein Skifahrer in voller Montur fliegt mutig über einen schneebedeckten Hügel, während der klare, blaue Himmel im Hintergrund strahlt. Die Sonne scheint hell, beleuchtet die funkelnden Schneeflocken und wirft lange Schatten auf die Piste. An einem perfekten Wintertag vor einigen Jahren, als der Schnee frisch und die Bedingungen ideal waren, führte dieser Sprung zu einem unvergesslichen Moment voller Adrenalin und Freude.',
-    imagePath: 'assets/images/download-2.jpg',
+        'Tischtennis ist ein unglaublich vielseitiger Kraftsport für Herz, Kreislauf und Körper. Um schnell reagieren zu können, ist der Mensch ständig in Bewegung. Dabei beanspruchte man viele Muskelgruppen gleichzeitig, ohne die Gelenke zu stark zu belasten.',
+    imagePath: 'assets/images/download-9.jpg',
   ),
   GalleryItem(
-    imageTitle: 'Achtung Kurve',
+    imageTitle: 'Basketball',
     imageDate: '18.06.2022',
     imageDescription:
-        'Eine große Gruppe Rennradfahrer legt sich synchron in eine scharfe Kurve, während sie mit beeindruckender Geschwindigkeit die Strecke entlangrasen. Die bunten Trikots der Fahrer leuchten im Sonnenschein, und ihre Konzentration ist greifbar. Vor einigen Jahren, während eines spannenden Wettkampfs an einem sonnigen Frühlingstag, markierte diese Kurve den Wendepunkt des Rennens und wurde zum Schauplatz eines packenden Duells um die Spitze.',
-    imagePath: 'assets/images/download-3.jpg',
+        'Basketball ist nicht eine aller Möglichkeiten, fit zu bleiben, sondern kann Ihnen auch helfen: neue Freunde kennenzulernen und sie regelmäßig zu sehen. Es lehrt Sie, ein guter Teamplayer zu sein. Es kann von Menschen aller Altersgruppen und Leistungsstufen gespielt werden. Es kann das ganze Jahr über gespielt werden, da es normalerweise ein Hallensport ist.',
+    imagePath: 'assets/images/download-10.jpg',
   ),
   GalleryItem(
     imageTitle: 'Runners High',
     imageDate: '22.09.2023',
     imageDescription:
         'Unsere acht Läufer bewegen sich hier in einer beeindruckenden Dreiecks-Formation über die Bahnen des sonnigen Sportplatzes am Mauerpark. Alle Athleten sind synchronisiert, ihre Schritte im perfekten Einklang, während sie die rote Tartanbahn unter ihren Füßen spüren. An einem kühlen Herbstmorgen, während eines intensiven Trainings, wurde diese Formation gewählt, um Teamarbeit und Präzision zu perfektionieren, und es war ein Moment, der die Entschlossenheit und den Zusammenhalt der Gruppe widerspiegelte.',
-    imagePath: 'assets/images/download-4.jpg',
+    imagePath: 'assets/images/download-11.jpg',
   ),
   GalleryItem(
-    imageTitle: 'Swish',
+    imageTitle: 'Schimmen Time',
     imageDate: '11.08.2018',
     imageDescription:
-        'Ein Foto, das von unten aufgenommen wurde, zeigt einen Basketballkorb mit einem strahlend blauen Himmel im Hintergrund. Die Sonne scheint hell, und das weiße Netz des Korbs hebt sich kontrastreich gegen das Blau ab. An einem klaren Sommernachmittag, vor vielen Jahren, wurde hier ein legendäres Spiel gespielt, bei dem der letzte Korb im goldenen Licht des Abends glänzte.',
-    imagePath: 'assets/images/download-5.jpg',
+        'Schwimmen ist ein hervorragender Ausdauersport. Es trainiert den Herzmuskel. Es treibt das Herz-Kreislauf-System an. Es stärkt das Immunsystem, weil viele Stoffwechselprozesse in Gang gesetzt werden.',
+    imagePath: 'assets/images/download-12.jpg',
   ),
   GalleryItem(
-    imageTitle: 'Ball Game',
+    imageTitle: 'Soccer',
     imageDate: '29.11.2023',
     imageDescription:
-        'Die Nahaufnahme zeigt einen gelb-grünen Tennisball, der auf dem glänzenden Boden der Sporthalle liegt. Die Textur des Balls ist deutlich sichtbar, während das gedämpfte Licht der Halle eine ruhige Atmosphäre schafft. An einem regnerischen Nachmittag fand hier ein spannendes Match statt, bei dem dieser Ball im entscheidenden Moment des Spiels eine wichtige Rolle spielte.',
-    imagePath: 'assets/images/download-6.jpg',
+        'verbesserte Schnelligkeit, Kraft und Ausdauer im Alltag. Gute körperliche Bewegungsfähigkeit (Koordination) auch unter Stress. Erweiterung sozialer Fähigkeiten durch gemeinschaftliches Erleben von Erfolg und Misserfolg, Stärkung des eigenen Selbstvertrauens.',
+    imagePath: 'assets/images/download-13.jpg',
   ),
   GalleryItem(
-    imageTitle: 'Sieg in der Natur',
+    imageTitle: 'Immer Trainieren',
     imageDate: '02.05.2022',
     imageDescription:
-        'Eine beeindruckende Drohnenaufnahme zeigt ein Tennisfeld, das idyllisch mitten im Grünen liegt. Das leuchtend grüne Spielfeld kontrastiert wunderschön mit den umgebenden Bäumen und Wiesen. An einem sonnigen Sommertag vor einigen Jahren wurde hier ein Turnier ausgetragen, bei dem Spieler und Zuschauer gleichermaßen die atemberaubende Naturkulisse genossen.',
-    imagePath: 'assets/images/download-7.jpg',
+        'Es ist absolut richtig. Um Muskelmasse aufzubauen muss man nicht zwangsweise schwer trainieren und schon gar nicht im reinen Maximalkraftbereich, wie etwa ein Powerlifter. Hier kann man auch mit verhältnismäßig geringen Gewichten trainieren und tolle Muskelaufbau-Erfolge sehen. Dennoch macht es für wirklich jeden Sinn, auch regelmäßig richtig schwer zu trainieren. ',
+    imagePath: 'assets/images/download-14.jpg',
   ),
 ];
 

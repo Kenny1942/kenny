@@ -28,9 +28,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Center(
-          child: pages[_pageIndex],
-        ),
+        child: pages[_pageIndex],
       ),
       bottomNavigationBar: NavigationBar(
           selectedIndex: _pageIndex,
