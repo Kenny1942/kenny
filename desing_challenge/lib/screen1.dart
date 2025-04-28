@@ -75,6 +75,7 @@ class MyCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.white,
+                fontWeight: FontWeight.w900,
               ),
             ),
             SizedBox(height: 10),
@@ -100,7 +101,11 @@ class MyCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: Text('Order Now'),
+              child: Text(
+                'Order Now',
+                // style: TextStyle( fontStyle:
+                //   FontWeight.w900,
+              ),
             ),
           ],
         ),

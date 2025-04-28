@@ -1,3 +1,4 @@
+import 'package:desing_challenge/my_card2.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -137,121 +138,37 @@ class Hauptseite extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 560,
-            left: 18,
-            child: MyCard2(),
-          ),
-          Positioned(
-            top: 560,
-            left: 248,
-            child: MyCard2(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MyCard2 extends StatelessWidget {
-  const MyCard2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 190,
-      height: 290,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [0.07, 0.61, 1.0],
-          colors: [
-            Color(0xFFFFFFFF), // blanco
-            Color(0xFF908CF5), // lila medio
-            Color(0xFF8C5BEA), // violeta fuerte
-          ],
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 8,
-            offset: Offset(0, 4),
+            bottom: 30,
+            left: 15,
+            right: 0,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+                MyCard2(
+                    imagePath: 'assets/images/cupkake_cat.png',
+                    title: 'Moglis Cup',
+                    description: 'Strawberry ice cream',
+                    price: '8,99',
+                    likes: '120',
+                    icon: Icons.favorite),
+                MyCard2(
+                    imagePath: 'assets/images/icecream.png',
+                    title: 'Balus Cup',
+                    description: 'Pistachio ice cream',
+                    price: '4,99',
+                    likes: '120',
+                    icon: Icons.favorite),
+                MyCard2(
+                    imagePath: 'assets/images/icecream_stick.png',
+                    title: 'Moglis Cup',
+                    description: 'Strawberry ice cream',
+                    price: '4,99',
+                    likes: '120',
+                    icon: Icons.favorite),
+              ]),
+            ),
           ),
         ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Imagen en la parte superior
-            ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              child: Image.asset(
-                'assets/images/cupkake_cat.png',
-                width: double.infinity,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 20),
-            // Nombre
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(
-                'Moglis Cup',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            // Descripción
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: Text(
-                'Strawberry ice cream',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: const Color.fromARGB(179, 241, 233, 233),
-                ),
-              ),
-            ),
-            Spacer(),
-            // Precio y likes
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: Row(
-                children: [
-                  Text(
-                    '\$4.99',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.favorite,
-                    color: const Color.fromARGB(255, 243, 234, 234),
-                    size: 20,
-                  ),
-                  SizedBox(width: 4),
-                  Text(
-                    '120',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
