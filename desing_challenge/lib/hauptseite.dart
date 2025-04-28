@@ -71,12 +71,12 @@ class Hauptseite extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 55,
-            right: -100,
+            top: 170,
+            right: 20,
             child: Image.asset(
               'assets/images/cut_card.png',
-              width: 600,
-              height: 600,
+              width: 350,
+              height: 350,
             ),
           ),
           Positioned(
@@ -86,6 +86,18 @@ class Hauptseite extends StatelessWidget {
               'assets/images/burger.png',
               width: 200,
               height: 200,
+            ),
+          ),
+          Positioned(
+            top: 523,
+            left: 9,
+            child: Text(
+              'We Recommend',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

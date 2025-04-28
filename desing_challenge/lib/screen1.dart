@@ -47,15 +47,15 @@ class _Screen1State extends State<Screen1> {
           bottom: 140,
           left: 16,
           right: 16,
-          child: MyWidget(),
+          child: MyCard(),
         ),
       ]),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class MyCard extends StatelessWidget {
+  const MyCard({super.key});
 
   @override
   Widget build(BuildContext context) {
