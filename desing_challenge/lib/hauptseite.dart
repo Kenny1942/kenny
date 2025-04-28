@@ -141,6 +141,11 @@ class Hauptseite extends StatelessWidget {
             left: 18,
             child: MyCard2(),
           ),
+          Positioned(
+            top: 560,
+            left: 248,
+            child: MyCard2(),
+          ),
         ],
       ),
     );
