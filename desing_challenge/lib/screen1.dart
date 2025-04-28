@@ -1,6 +1,5 @@
 import 'package:desing_challenge/hauptseite.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -14,18 +13,17 @@ class _Screen1State extends State<Screen1> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        // Fondo (imagen grande)
         Positioned.fill(
           child: Image.asset(
-            'assets/images/bg_startscreen.png', // <-- tu fondo
-            fit: BoxFit.cover, // que cubra todo
+            'assets/images/bg_startscreen.png',
+            fit: BoxFit.cover,
           ),
         ),
         Positioned(
           top: 55,
           left: -40,
           child: Image.asset(
-            'assets/images/cupcake_chick.png', // <-- imagen encima
+            'assets/images/cupcake_chick.png',
             width: 600,
             height: 600,
           ),
@@ -45,13 +43,11 @@ class _Screen1State extends State<Screen1> {
             ),
           ),
         ),
-
         Positioned(
-          bottom: 140, // Cambia la posición según lo que necesites
-          left: 16, // O ajusta según tu preferencia
-          right:
-              16, // Asegúrate de que esté dentro de los límites de la pantalla
-          child: MyWidget(), // Este es el widget que llamas
+          bottom: 140,
+          left: 16,
+          right: 16,
+          child: MyWidget(),
         ),
       ]),
     );
@@ -83,9 +79,10 @@ class MyWidget extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "Explore Angi's most popular snack selection and get instantly happy",
+              "Explore Angi's most popular snack selection \n and get instantly happy",
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 color: Colors.white70,
               ),
             ),

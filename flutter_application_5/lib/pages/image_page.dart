@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/gallery_data.dart';
-import 'package:flutter_application_5/pages/image_detail_page.dart';
 
 class ImagePage extends StatelessWidget {
   // Konstruktor
