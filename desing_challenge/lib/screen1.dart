@@ -1,4 +1,4 @@
-import 'package:desing_challenge/hauptseite.dart';
+import 'package:desing_challenge/my_card1.dart';
 import 'package:flutter/material.dart';
 
 class Screen1 extends StatefulWidget {
@@ -47,69 +47,9 @@ class _Screen1State extends State<Screen1> {
           bottom: 140,
           left: 16,
           right: 16,
-          child: MyCard(),
+          child: MyCard1(),
         ),
       ]),
-    );
-  }
-}
-
-class MyCard extends StatelessWidget {
-  const MyCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Colors.black.withValues(alpha: 0.4), // Semi-transparente
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20), // Bordes redondeados
-      ),
-      elevation: 8, // Sombra para darle profundidad
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min, // Solo ocupa el espacio necesario
-          children: [
-            Text(
-              "Feeling Snackisch Today?",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              "Explore Angi's most popular snack selection \n and get instantly happy",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Hauptseite()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 124, 54, 104),
-                foregroundColor: const Color.fromARGB(255, 235, 226, 226),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-              child: Text(
-                'Order Now',
-                // style: TextStyle( fontStyle:
-                //   FontWeight.w900,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

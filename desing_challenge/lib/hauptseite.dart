@@ -1,6 +1,9 @@
+import 'package:desing_challenge/buttons.dart';
+import 'package:desing_challenge/card_in_desp_screen.dart';
+import 'package:desing_challenge/icons_Details.dart';
+import 'package:desing_challenge/screen3.dart';
 import 'package:desing_challenge/my_card2.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
 class Hauptseite extends StatelessWidget {
   const Hauptseite({super.key});
@@ -36,72 +39,21 @@ class Hauptseite extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                    margin: EdgeInsets.symmetric(horizontal: 6),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(235, 170, 120, 170),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                        color: Colors.white, // Color del borde
-                        width: 1, // Grosor del borde
-                      ),
-                    ),
-                    child: Text(
-                      'All categories',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
+                  Container1(
+                    laenge: 25,
+                    text: 'All categories',
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                    margin: EdgeInsets.symmetric(horizontal: 6),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(235, 170, 120, 170),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                        color: Colors.white, // Color del borde
-                        width: 1, // Grosor del borde
-                      ),
-                    ),
-                    child: Text(
-                      'Salty',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  Container1(
+                    laenge: 25,
+                    text: 'Salty',
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                    margin: EdgeInsets.symmetric(horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(235, 170, 120, 170),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                        color: Colors.white, // Color del borde
-                        width: 1, // Grosor del borde
-                      ),
-                    ),
-                    child: Text(
-                      'Sweet',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  Container1(
+                    laenge: 25,
+                    text: 'Sweet',
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                    margin: EdgeInsets.symmetric(horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(235, 170, 120, 170),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                        color: Colors.white, // Color del borde
-                        width: 1, // Grosor del borde
-                      ),
-                    ),
-                    child: Text(
-                      'Picant',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  Container1(
+                    laenge: 25,
+                    text: 'Pikant',
                   ),
                 ],
               ),
@@ -109,7 +61,7 @@ class Hauptseite extends StatelessWidget {
           ),
           Positioned(
             top: 180,
-            right: 15,
+            right: 20,
             child: Image.asset(
               'assets/images/cut_card.png',
               width: 350,
@@ -118,11 +70,59 @@ class Hauptseite extends StatelessWidget {
           ),
           Positioned(
             top: 290,
-            right: -10,
+            right: 12,
             child: Image.asset(
               'assets/images/burger.png',
               width: 200,
               height: 200,
+            ),
+          ),
+          Positioned(
+            top: 250,
+            left: 55,
+            child: Text(
+              'Angis Yummy Burger',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 285,
+            left: 55,
+            child: Text(
+              'Delish vergan burger\nthat tastes like heaven',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 345,
+            left: 55,
+            child: Text(
+              '13.99',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 395,
+            left: 55,
+            child: OutlinedButton(
+              onPressed: () {},
+              child: Text(
+                'Add to order',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
             ),
           ),
           Positioned(
@@ -144,29 +144,32 @@ class Hauptseite extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(children: [
-                MyCard2(
-                    imagePath: 'assets/images/cupkake_cat.png',
-                    title: 'Moglis Cup',
-                    description: 'Strawberry ice cream',
-                    price: '8,99',
-                    likes: '120',
-                    icon: Icons.favorite),
+                MainContainer(
+                  description: 'Strawerry ice cream',
+                  icon: Icons.favorite,
+                  imagePath: 'assets/images/cupcake_chick.png',
+                  likes: '5',
+                  price: '5.55',
+                  title: 'Moglis Cup',
+                ),
                 SizedBox(width: 10),
-                MyCard2(
-                    imagePath: 'assets/images/icecream.png',
-                    title: 'Balus Cup',
-                    description: 'Pistachio ice cream',
-                    price: '4,99',
-                    likes: '120',
-                    icon: Icons.favorite),
+                MainContainer(
+                  imagePath: 'assets/images/cupkake_cat.png',
+                  title: 'Moglis Cup',
+                  description: 'Strawberry ice cream',
+                  price: '10,99',
+                  likes: '120',
+                  icon: Icons.favorite,
+                ),
                 SizedBox(width: 10),
-                MyCard2(
-                    imagePath: 'assets/images/icecream_stick.png',
-                    title: 'Moglis Cup',
-                    description: 'Strawberry ice cream',
-                    price: '4,99',
-                    likes: '120',
-                    icon: Icons.favorite),
+                MainContainer(
+                  imagePath: 'assets/images/icecream_cone.png',
+                  title: 'Moglis Cup',
+                  description: 'Strawberry ice cream',
+                  price: '10,99',
+                  likes: '120',
+                  icon: Icons.favorite,
+                ),
                 SizedBox(width: 10),
               ]),
             ),

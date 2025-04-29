@@ -29,9 +29,9 @@ class MyCard2 extends StatelessWidget {
           end: Alignment.bottomCenter,
           stops: [0.07, 0.61, 1.0],
           colors: [
-            Color(0xFFFFFFFF), // blanco
-            Color(0xFF908CF5), // lila medio
-            Color(0xFF8C5BEA), // violeta fuerte
+            Color.fromARGB(255, 120, 115, 115),
+            Color(0xFF908CF5),
+            Color(0xFF8C5BEA),
           ],
         ),
         boxShadow: [
@@ -47,7 +47,6 @@ class MyCard2 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen en la parte superior
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               child: Image.asset(
@@ -58,7 +57,6 @@ class MyCard2 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            // Nombre
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Text(
@@ -70,7 +68,6 @@ class MyCard2 extends StatelessWidget {
                 ),
               ),
             ),
-            // Descripción
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               child: Text(
@@ -82,7 +79,6 @@ class MyCard2 extends StatelessWidget {
               ),
             ),
             Spacer(),
-            // Precio y likes
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: Row(
