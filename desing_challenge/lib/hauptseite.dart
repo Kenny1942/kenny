@@ -151,6 +151,7 @@ class Hauptseite extends StatelessWidget {
                     price: '8,99',
                     likes: '120',
                     icon: Icons.favorite),
+                SizedBox(width: 10),
                 MyCard2(
                     imagePath: 'assets/images/icecream.png',
                     title: 'Balus Cup',
@@ -158,6 +159,7 @@ class Hauptseite extends StatelessWidget {
                     price: '4,99',
                     likes: '120',
                     icon: Icons.favorite),
+                SizedBox(width: 10),
                 MyCard2(
                     imagePath: 'assets/images/icecream_stick.png',
                     title: 'Moglis Cup',
@@ -165,6 +167,7 @@ class Hauptseite extends StatelessWidget {
                     price: '4,99',
                     likes: '120',
                     icon: Icons.favorite),
+                SizedBox(width: 10),
               ]),
             ),
           ),
