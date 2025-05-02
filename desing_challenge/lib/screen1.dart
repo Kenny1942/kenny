@@ -1,5 +1,6 @@
 import 'package:desing_challenge/my_card1.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -34,20 +35,26 @@ class _Screen1State extends State<Screen1> {
           child: Text(
             'CK SNACK',
             style: TextStyle(
+              fontFamily: 'Inter',
               fontSize: 97,
               fontWeight: FontWeight.bold,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
-                ..strokeWidth = 3 // Grosor del borde
-                ..color = Color.fromARGB(100, 255, 255, 255), // Color del borde
+                ..strokeWidth = 3
+                ..color = Color.fromARGB(99, 240, 229, 229),
             ),
           ),
         ),
         Positioned(
-          bottom: 140,
+          bottom: 120,
           left: 16,
           right: 16,
-          child: MyCard1(),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: MyCard1()),
+          ),
         ),
       ]),
     );

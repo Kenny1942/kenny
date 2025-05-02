@@ -40,21 +40,22 @@ class Hauptseite extends StatelessWidget {
               child: Row(
                 children: [
                   Container1(
-                    laenge: 25,
-                    text: 'All categories',
-                  ),
+                      laenge: 25, text: 'All categories', color2: Colors.white),
                   Container1(
-                    laenge: 25,
-                    text: 'Salty',
-                  ),
+                      laenge: 25,
+                      text: 'Salty',
+                      color1: const Color.fromARGB(235, 201, 146, 201),
+                      color2: const Color.fromARGB(255, 23, 19, 19)),
                   Container1(
-                    laenge: 25,
-                    text: 'Sweet',
-                  ),
+                      laenge: 25,
+                      text: 'Sweet',
+                      color1: const Color.fromARGB(235, 209, 137, 209),
+                      color2: Colors.white),
                   Container1(
-                    laenge: 25,
-                    text: 'Pikant',
-                  ),
+                      laenge: 25,
+                      text: 'Pikant',
+                      color1: const Color.fromARGB(235, 209, 137, 209),
+                      color2: Colors.white),
                 ],
               ),
             ),
@@ -80,13 +81,36 @@ class Hauptseite extends StatelessWidget {
           Positioned(
             top: 250,
             left: 55,
-            child: Text(
-              'Angis Yummy Burger',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  'Angis Yummy Burger',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                ),
+                Image.asset(
+                  'assets/images/star.png',
+                  width: 12,
+                  height: 12,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  '4.8',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(
@@ -104,13 +128,17 @@ class Hauptseite extends StatelessWidget {
           Positioned(
             top: 345,
             left: 55,
-            child: Text(
-              '13.99',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/eeee.png',
+                  width: 12,
+                  height: 12,
+                ),
+                Text('13,99',
+                    style: TextStyle(fontSize: 15, color: Colors.white)),
+              ],
             ),
           ),
           Positioned(
@@ -118,6 +146,20 @@ class Hauptseite extends StatelessWidget {
             left: 55,
             child: OutlinedButton(
               onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 141, 84, 206),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                side: BorderSide(
+                    color: const Color.fromARGB(255, 107, 75, 135)
+                        .withOpacity(0.5)),
+                elevation: 8,
+                shadowColor:
+                    const Color.fromARGB(255, 134, 108, 187).withOpacity(0.4),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
               child: Text(
                 'Add to order',
                 style:
@@ -146,29 +188,52 @@ class Hauptseite extends StatelessWidget {
               child: Row(children: [
                 MainContainer(
                   description: 'Strawerry ice cream',
-                  icon: Icons.favorite,
+                  icon: 'assets/images/Heart.svg',
                   imagePath: 'assets/images/cupcake_chick.png',
                   likes: '5',
                   price: '5.55',
                   title: 'Moglis Cup',
+                  coin: 'assets/images/eeee.png',
                 ),
                 SizedBox(width: 10),
                 MainContainer(
                   imagePath: 'assets/images/cupkake_cat.png',
-                  title: 'Moglis Cup',
-                  description: 'Strawberry ice cream',
+                  title: 'Charlis Cup',
+                  description: 'Delicious cupkake',
                   price: '10,99',
                   likes: '120',
-                  icon: Icons.favorite,
+                  icon: 'assets/images/Heart.svg',
+                  coin: 'assets/images/eeee.png',
                 ),
                 SizedBox(width: 10),
                 MainContainer(
                   imagePath: 'assets/images/icecream_cone.png',
-                  title: 'Moglis Cup',
-                  description: 'Strawberry ice cream',
-                  price: '10,99',
-                  likes: '120',
-                  icon: Icons.favorite,
+                  title: 'Kai in a Cone',
+                  description: 'Vainilla ice cream',
+                  price: '12,99',
+                  likes: '10',
+                  icon: 'assets/images/Heart.svg',
+                  coin: 'assets/images/eeee.png',
+                ),
+                SizedBox(width: 10),
+                MainContainer(
+                  imagePath: 'assets/images/icecream.png',
+                  title: 'Kai in a Cone',
+                  description: 'Vainilla ice cream',
+                  price: '7,99',
+                  likes: '15',
+                  icon: 'assets/images/Heart.svg',
+                  coin: 'assets/images/eeee.png',
+                ),
+                SizedBox(width: 10),
+                MainContainer(
+                  imagePath: 'assets/images/icecream_stick.png',
+                  title: 'Kai in a Cone',
+                  description: 'Vainilla ice cream',
+                  price: '6,99',
+                  likes: '11',
+                  icon: 'assets/images/Heart.svg',
+                  coin: 'assets/images/eeee.png',
                 ),
                 SizedBox(width: 10),
               ]),
