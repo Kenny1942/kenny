@@ -1,8 +1,5 @@
 import 'package:desing_challenge/buttons.dart';
-import 'package:desing_challenge/card_in_desp_screen.dart';
-import 'package:desing_challenge/icons_Details.dart';
 import 'package:desing_challenge/screen3.dart';
-import 'package:desing_challenge/my_card2.dart';
 import 'package:flutter/material.dart';
 
 class Hauptseite extends StatelessWidget {

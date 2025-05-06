@@ -1,5 +1,4 @@
 import 'package:desing_challenge/card_in_desp_screen.dart';
-import 'package:desing_challenge/my_card2.dart';
 import 'package:desing_challenge/quantity_selector.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
