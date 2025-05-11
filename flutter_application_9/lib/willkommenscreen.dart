@@ -81,7 +81,7 @@ class WillkommenScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 120),
+                SizedBox(height: 130),
                 Text(
                   'Schon bei IronFit registriert',
                   style: TextStyle(
@@ -91,7 +91,6 @@ class WillkommenScreen extends StatelessWidget {
                     color: Color.fromARGB(255, 19, 2, 2),
                   ),
                 ),
-                SizedBox(height: 10),
                 TextButton(
                   onPressed: () {},
                   child: Text(
@@ -104,7 +103,7 @@ class WillkommenScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 0),
               ],
             ),
           ),

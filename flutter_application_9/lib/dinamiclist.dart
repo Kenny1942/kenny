@@ -12,7 +12,7 @@ class Dinamiclist extends StatefulWidget {
 class _ListaDinamicaState extends State<Dinamiclist> {
   final List<Map<String, String>> _items = [];
 
-  void _agregarElemento() {
+  void _addingElement() {
     String nombre = '';
     String urlImagen = '';
 
@@ -20,16 +20,16 @@ class _ListaDinamicaState extends State<Dinamiclist> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Agregar nuevo elemento'),
+          title: const Text('Neue Freunde Hinzufügen'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
-                decoration: const InputDecoration(labelText: 'Nombre'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 onChanged: (value) => nombre = value,
               ),
               TextField(
-                decoration: const InputDecoration(labelText: 'URL de imagen'),
+                decoration: const InputDecoration(labelText: 'URL'),
                 onChanged: (value) => urlImagen = value,
               ),
             ],
@@ -44,7 +44,7 @@ class _ListaDinamicaState extends State<Dinamiclist> {
                 }
                 Navigator.pop(context);
               },
-              child: const Text('Agregar'),
+              child: const Text('Hinzufügen'),
             ),
           ],
         );
@@ -87,7 +87,7 @@ class _ListaDinamicaState extends State<Dinamiclist> {
           bottom: 20,
           right: 20,
           child: FloatingActionButton(
-            onPressed: _agregarElemento,
+            onPressed: _addingElement,
             child: const Icon(Icons.add),
           ),
         ),
