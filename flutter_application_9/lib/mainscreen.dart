@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/menu_button.dart';
+import 'package:flutter_application_9/buildmenu.dart';
+import 'package:flutter_application_9/freunde.dart';
+import 'package:flutter_application_9/training.dart';
+import 'package:flutter_application_9/reminders.dart';
+import 'package:flutter_application_9/berichte.dart';
 
 enum MenuView { menu, freunde, training, reminders, berichte }
 
@@ -11,22 +15,18 @@ class Anmeldung extends StatefulWidget {
 }
 
 class _AnmeldungState extends State<Anmeldung> {
-  @override
   MenuView _currentView = MenuView.menu;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
+          //geteilte hintergrund
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/backg.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/backg.png', fit: BoxFit.cover),
           ),
           Container(
-            height: double.infinity,
-            width: double.infinity,
             color: const Color.fromARGB(255, 211, 200, 200).withOpacity(0.9),
           ),
           Positioned.fill(
@@ -34,78 +34,64 @@ class _AnmeldungState extends State<Anmeldung> {
             top: -1050,
             child: Image.asset('assets/images/logo5.png'),
           ),
-          Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 170,
-                ),
-                Text(
-                  'Hi Kenny!',
-                  style: TextStyle(fontSize: 24),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  'Menu',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 60),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    MenuButton(
-                      imagePath: 'assets/images/Rectangle1.png',
-                      label: 'Freunde',
-                      onTap: () {
-                        setState(() {
-                          _currentView = MenuView.freunde;
-                        });
-                      },
-                    ),
-                    MenuButton(
-                      imagePath: 'assets/images/Rectangle2.png',
-                      label: 'Training',
-                      onTap: () {
-                        setState(() {
-                          _currentView = MenuView.training;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    MenuButton(
-                      imagePath: 'assets/images/Rectangle3.png',
-                      label: 'Reminders',
-                      onTap: () {
-                        setState(() {
-                          _currentView = MenuView.reminders;
-                        });
-                      },
-                    ),
-                    MenuButton(
-                      imagePath: 'assets/images/Rectangle4.png',
-                      label: 'Berichte',
-                      onTap: () {
-                        setState(() {
-                          _currentView = MenuView.berichte;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          Positioned.fill(child: _buildBody()),
         ],
       ),
     );
   }
+
+  Widget _buildBody() {
+    switch (_currentView) {
+      case MenuView.freunde:
+        return _buildFreunde();
+      case MenuView.training:
+        return _buildTraining();
+      case MenuView.reminders:
+        return _buildReminders();
+      case MenuView.berichte:
+        return _buildBerichte();
+      case MenuView.menu:
+      default:
+        return Buildmenu(
+          onMenuSelected: (MenuView selected) {
+            setState(() {
+              _currentView = selected;
+            });
+          },
+        );
+    }
+  }
+
+  Widget _buildFreunde() => Freunde(
+        back: () {
+          setState(() {
+            _currentView = MenuView.menu;
+          });
+        },
+        title: 'Freunde',
+      );
+  Widget _buildTraining() => Training(
+        back: () {
+          setState(() {
+            _currentView = MenuView.menu;
+          });
+        },
+        title: 'Training',
+      );
+  Widget _buildReminders() => Reminders(
+        back: () {
+          setState(() {
+            _currentView = MenuView.menu;
+          });
+        },
+        title: 'Reminders',
+      );
+  Widget _buildBerichte() => Berichte(
+        back: () {
+          setState(() {
+            _currentView = MenuView.menu;
+          });
+        },
+        title: 'Berichte',
+      );
 }
