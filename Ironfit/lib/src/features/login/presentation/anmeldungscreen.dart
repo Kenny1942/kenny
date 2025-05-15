@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/mainscreen.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
 class AnmeldungScreen extends StatelessWidget {
-  const AnmeldungScreen({super.key});
+  final DatabaseRepository db;
+  const AnmeldungScreen(this.db, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,7 @@ class AnmeldungScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => HauptScreen(),
+                        builder: (context) => HauptScreen(db),
                       ),
                     );
                   },

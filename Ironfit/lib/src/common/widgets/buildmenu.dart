@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/menu_button.dart';
-import 'package:flutter_application_9/mainscreen.dart';
+import 'package:flutter_application_9/src/common/widgets/menu_button.dart';
+import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
 class Buildmenu extends StatelessWidget {
   final Function(MenuView) onMenuSelected;

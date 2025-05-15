@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
 
 class Berichte extends StatelessWidget {
+  final DatabaseRepository db;
+
   final List<Map<String, dynamic>> trainings;
   final String title;
   final VoidCallback back;
 
-  const Berichte(
+  const Berichte(this.db,
       {super.key,
       required this.trainings,
       required this.title,

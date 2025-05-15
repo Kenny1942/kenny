@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/dinamiclist.dart';
+import 'package:flutter_application_9/src/features/freunde/presentation/dinamiclist.dart';
 
 class Freunde extends StatefulWidget {
   final String title;

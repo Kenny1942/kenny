@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/buildmenu.dart';
-import 'package:flutter_application_9/freunde.dart';
-import 'package:flutter_application_9/training.dart';
-import 'package:flutter_application_9/reminders.dart';
+import 'package:flutter_application_9/src/common/widgets/buildmenu.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:flutter_application_9/src/features/berichte/presentation/berichte.dart';
+import 'package:flutter_application_9/src/features/freunde/presentation/freunde.dart';
+import 'package:flutter_application_9/src/features/training/domain/training.dart';
+import 'package:flutter_application_9/src/features/training/presentation/training.dart';
+import 'package:flutter_application_9/src/features/reminders/presentation/reminders.dart';
 
 enum MenuView { menu, freunde, training, reminders, berichte }
 
 class HauptScreen extends StatefulWidget {
-  const HauptScreen({super.key});
+  final DatabaseRepository db;
+  const HauptScreen(this.db, {super.key});
 
   @override
   State<HauptScreen> createState() => _HauptScreenState();
@@ -69,7 +73,8 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Freunde',
       );
-  Widget _buildTraining() => Training(
+  Widget _buildTraining() => Training1(
+        widget.db,
         back: () {
           setState(() {
             _currentView = MenuView.menu;
@@ -85,8 +90,8 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Reminders',
       );
-  Widget _buildBerichte() => Training(
-        /////////////////////////////////// das muss noch geändert/aktualisiert werden //////////
+  Widget _buildBerichte() => Training1(
+        widget.db,
         back: () {
           setState(() {
             _currentView = MenuView.menu;

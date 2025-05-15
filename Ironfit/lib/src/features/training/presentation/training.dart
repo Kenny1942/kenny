@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/trainingsformular.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:flutter_application_9/src/features/training/presentation/trainingsformular.dart';
 
-class Training extends StatefulWidget {
+class Training1 extends StatefulWidget {
+  final DatabaseRepository db;
+
   final String title;
   final VoidCallback back;
 
-  const Training({super.key, required this.title, required this.back});
+  const Training1(this.db,
+      {super.key, required this.title, required this.back});
 
   @override
-  State<Training> createState() => _TrainingState();
+  State<Training1> createState() => _TrainingState();
 }
 
-class _TrainingState extends State<Training> {
+class _TrainingState extends State<Training1> {
   void _formOpen(String exercise) {
     showDialog(
       context: context,
@@ -73,7 +77,6 @@ class _TrainingState extends State<Training> {
                 _trainingButton('Schwimmen', Icons.pool),
                 _trainingButton('Gehen', Icons.directions_walk),
                 _trainingButton('Workout', Icons.fitness_center),
-                _trainingButton('Radfahren', Icons.bike_scooter),
                 _trainingButton('Radfahren', Icons.bike_scooter),
               ],
             ),
