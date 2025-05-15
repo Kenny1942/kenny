@@ -1,40 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:flutter_application_9/src/features/training/domain/training.dart';
 
-class Berichte extends StatelessWidget {
+class Berichte extends StatefulWidget {
   final DatabaseRepository db;
-
-  final List<Map<String, dynamic>> trainings;
   final String title;
   final VoidCallback back;
 
-  const Berichte(this.db,
-      {super.key,
-      required this.trainings,
-      required this.title,
-      required this.back});
+  const Berichte(
+    this.db, {
+    super.key,
+    required this.title,
+    required this.back,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    final totalDauer = trainings.fold<int>(
-        0, (sum, item) => sum + ((item['dauer'] ?? 0) as num).toInt());
-    final totalDistanz = trainings.fold<double>(
-        0.0, (sum, item) => sum + (item['distanz'] ?? 0.0));
-    final totalKalorien = trainings.fold<double>(
-        0.0, (sum, item) => sum + (item['kalorien'] ?? 0.0));
+  State<Berichte> createState() => _FreundeState();
+}
 
+class _FreundeState extends State<Berichte> {
+  @override
+  Widget build(BuildContext context) {
+    List<Training> myTrainings = widget.db.getUserTrainings('user1');
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Berichte',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 20),
-          Text('Trainingsanzahl: ${trainings.length}'),
-          Text('Zeit insgesamt: $totalDauer min'),
-          Text('Distanz insgesamt: ${totalDistanz.toStringAsFixed(2)} km'),
-          Text('Kalorien: ${totalKalorien.toStringAsFixed(0)} kcal'),
+          SizedBox(
+            height: 150,
+          ),
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: widget.back,
+          ),
+          Text('Zusammenfassung der letzen 7 Tagen'),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'Datum:${myTrainings[0].date}',
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
+          ),
+          Text('Training:${myTrainings[0].type}'),
+          Text('Zeit:${myTrainings[0].duration}'),
+          Text('Kalorien:${myTrainings[0].caloriesBurned}'),
+          SizedBox(
+            height: 10,
+          ),
+          Text('Datum:${myTrainings[1].date}',
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+          Text('Training:${myTrainings[1].type}'),
+          Text('Zeit:${myTrainings[1].duration}'),
+          Text('Kalorien:${myTrainings[1].caloriesBurned}'),
         ],
       ),
     );

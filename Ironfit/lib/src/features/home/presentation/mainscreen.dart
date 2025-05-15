@@ -3,7 +3,6 @@ import 'package:flutter_application_9/src/common/widgets/buildmenu.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/berichte/presentation/berichte.dart';
 import 'package:flutter_application_9/src/features/freunde/presentation/freunde.dart';
-import 'package:flutter_application_9/src/features/training/domain/training.dart';
 import 'package:flutter_application_9/src/features/training/presentation/training.dart';
 import 'package:flutter_application_9/src/features/reminders/presentation/reminders.dart';
 
@@ -90,7 +89,7 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Reminders',
       );
-  Widget _buildBerichte() => Training1(
+  Widget _buildBerichte() => Berichte(
         widget.db,
         back: () {
           setState(() {
