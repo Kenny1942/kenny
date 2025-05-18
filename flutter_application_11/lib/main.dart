@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_11/page2.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,40 +11,55 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Steckbrief Berlin'),
-          centerTitle: true,
-          backgroundColor: Colors.yellowAccent,
-        ),
-        body: Column(
+      home: Homescreen(),
+    );
+  }
+}
+
+class Homescreen extends StatelessWidget {
+  const Homescreen({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
           children: [
             SizedBox(
-              height: 300,
+              height: 100,
+            ),
+            Text('Hello Akademie'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Page2(),
+                ));
+              },
+              child: Text('go to next page'),
+            ),
+            SizedBox(height: 500),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.star, color: Colors.green),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Name'),
-                Text('Berlin'),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.circle, color: Colors.red),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.share, color: Colors.blue),
+                ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('Einwohner'),
-                Text('Viel zu viele '),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('Sehenswürdigkeiten'),
-                Text('App Akademie, Berghein'),
-              ],
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.square, color: Colors.yellow),
             ),
           ],
         ),

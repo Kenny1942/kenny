@@ -52,6 +52,27 @@ class _FreundeState extends State<Berichte> {
           Text('Training:${myTrainings[1].type}'),
           Text('Zeit:${myTrainings[1].duration}'),
           Text('Kalorien:${myTrainings[1].caloriesBurned}'),
+          SizedBox(height: 50),
+          // ListView.builder(
+          //   itemCount: myTrainings.length,
+          //   itemBuilder: (context, index) {
+          //     final training = myTrainings[index];
+
+          // return Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Text(
+          //       training.notes,
+          //       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          //     ),
+          //     Text('Tipo: ${training.type.name}'),
+          //     Text('Duración: ${training.duration.inMinutes} minutos'),
+          //     Text('Calorías: ${training.caloriesBurned} kcal'),
+          //     SizedBox(height: 12), // espacio entre elementos
+          //   ],
+          // );
+          // },
+          // ),
         ],
       ),
     );
