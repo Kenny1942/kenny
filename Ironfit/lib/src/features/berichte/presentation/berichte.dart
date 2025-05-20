@@ -23,19 +23,26 @@ class _FreundeState extends State<Berichte> {
   Widget build(BuildContext context) {
     List<Training> myTrainings = widget.db.getUserTrainings('user1');
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           SizedBox(
-            height: 150,
+            height: 130,
           ),
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: widget.back,
+          Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: widget.back,
+            ),
+          ),
+          Text('Berichte', style: const TextStyle(fontSize: 24)),
+          SizedBox(
+            height: 30,
           ),
           Text('Zusammenfassung der letzen 7 Tagen'),
           SizedBox(
-            height: 20,
+            height: 50,
           ),
           Text(
             'Datum:${myTrainings[0].date}',
@@ -68,7 +75,7 @@ class _FreundeState extends State<Berichte> {
           //     Text('Tipo: ${training.type.name}'),
           //     Text('Duración: ${training.duration.inMinutes} minutos'),
           //     Text('Calorías: ${training.caloriesBurned} kcal'),
-          //     SizedBox(height: 12), // espacio entre elementos
+          //     SizedBox(height: 12), // space
           //   ],
           // );
           // },

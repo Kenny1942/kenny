@@ -67,6 +67,10 @@ class _ListaDinamicaState extends State<Dinamiclist> {
           ),
         ),
         // list
+        Positioned(
+            top: 150,
+            left: 150,
+            child: Text('Freunde', style: const TextStyle(fontSize: 24))),
         Padding(
           padding: const EdgeInsets.only(top: 165),
           child: ListView.builder(

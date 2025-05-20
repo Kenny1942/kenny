@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
-class AnmeldungScreen extends StatelessWidget {
+class AnmeldungScreen extends StatefulWidget {
   final DatabaseRepository db;
   const AnmeldungScreen(this.db, {super.key});
 
+  @override
+  State<AnmeldungScreen> createState() => _AnmeldungScreenState();
+}
+
+class _AnmeldungScreenState extends State<AnmeldungScreen> {
+  String userInput1 = "";
+  String userInput2 = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +51,10 @@ class AnmeldungScreen extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                TextField(
+                TextFormField(
+                  onChanged: (text) {
+                    userInput1 = text;
+                  },
                   decoration: InputDecoration(
                     hintText: 'Gib deine E-Mail-Adresse ein',
                     filled: true,
@@ -62,7 +72,11 @@ class AnmeldungScreen extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                TextField(
+                TextFormField(
+                  onChanged: (text) {
+                    userInput2 = text;
+                  },
+                  obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Gib dein Passwort ein',
                     filled: true,
@@ -80,11 +94,13 @@ class AnmeldungScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => HauptScreen(db),
-                      ),
-                    );
+                    if (userInput1 == 'ww' && userInput2 == 'hola') {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => HauptScreen(widget.db),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromARGB(255, 194, 79, 79),

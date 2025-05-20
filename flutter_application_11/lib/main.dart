@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_11/page2.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,55 +10,103 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Homescreen(),
+      home: SampleExamScreen(),
     );
   }
 }
 
-class Homescreen extends StatelessWidget {
-  const Homescreen({
-    super.key,
-  });
+class SampleExamScreen extends StatefulWidget {
+  const SampleExamScreen({super.key});
 
   @override
+  State<SampleExamScreen> createState() => _SampleExamScreenState();
+}
+
+class _SampleExamScreenState extends State<SampleExamScreen> {
+  @override
+  bool x = false;
+  bool x1 = false;
+  bool e = false;
+
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: Text('Probe-Wissenchecks'),
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: 100,
+              height: 50,
             ),
-            Text('Hello Akademie'),
+            Image.asset(
+              height: 250,
+              width: 250,
+              'assets/images/moon.png',
+              fit: BoxFit.cover,
+            ),
+            ListTile(
+              title: Text('Vorbereitung'),
+              subtitle: Text('Auf dem Wissenchek 4'),
+              leading:
+                  Icon(x ? Icons.check_box : Icons.check_box_outline_blank),
+              onTap: () {
+                setState(() {
+                  x = !x;
+                });
+              },
+            ),
+            ListTile(
+              title: Text('Durchführung'),
+              subtitle: Text('Des Wissenchek 4'),
+              leading:
+                  Icon(x1 ? Icons.check_box : Icons.check_box_outline_blank),
+              onTap: () {
+                setState(() {
+                  x1 = !x1;
+                });
+              },
+            ),
+            SizedBox(
+              child: Column(
+                mainAxisAlignment:
+                    e ? MainAxisAlignment.start : MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.heart_broken,
+                      color: Colors.red,
+                      size: 80,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.circle,
+                      color: Colors.green,
+                      size: 80,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.star,
+                      color: Colors.blue,
+                      size: 80,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Page2(),
-                ));
+                setState(() {
+                  e = !e;
+                });
               },
-              child: Text('go to next page'),
-            ),
-            SizedBox(height: 500),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.star, color: Colors.green),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.circle, color: Colors.red),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.share, color: Colors.blue),
-                ),
-              ],
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.square, color: Colors.yellow),
+              child: Text('Swap'),
             ),
           ],
         ),
