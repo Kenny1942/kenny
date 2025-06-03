@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Dinamiclist extends StatefulWidget {
   final VoidCallback back;
+  final String title;
 
-  const Dinamiclist({super.key, required this.back});
+  const Dinamiclist({super.key, required this.back, required this.title});
 
   @override
   State<Dinamiclist> createState() => _ListaDinamicaState();
@@ -70,7 +71,7 @@ class _ListaDinamicaState extends State<Dinamiclist> {
         Positioned(
             top: 150,
             left: 150,
-            child: Text('Freunde', style: const TextStyle(fontSize: 24))),
+            child: Text(widget.title, style: const TextStyle(fontSize: 24))),
         Padding(
           padding: const EdgeInsets.only(top: 165),
           child: ListView.builder(

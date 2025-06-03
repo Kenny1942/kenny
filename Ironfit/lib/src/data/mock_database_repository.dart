@@ -55,7 +55,8 @@ class MockDatabaseRepository implements DatabaseRepository {
   ];
 
   @override
-  UserProfile? getUserProfile(String userId) {
+  Future<UserProfile?> getUserProfile(String userId) async {
+    await Future.delayed(Duration(seconds: 3));
     try {
       return _profiles.firstWhere((profile) => profile.userId == userId);
     } catch (_) {
@@ -64,12 +65,14 @@ class MockDatabaseRepository implements DatabaseRepository {
   }
 
   @override
-  void createUserProfile(UserProfile profile) {
+  Future<void> createUserProfile(UserProfile profile) async {
+    await Future.delayed(Duration(seconds: 3));
     _profiles.add(profile);
   }
 
   @override
-  void updateUserProfile(UserProfile profile) {
+  Future<void> updateUserProfile(UserProfile profile) async {
+    await Future.delayed(Duration(seconds: 3));
     final index = _profiles.indexWhere((p) => p.id == profile.id);
     if (index != -1) {
       _profiles[index] = profile;
@@ -77,12 +80,14 @@ class MockDatabaseRepository implements DatabaseRepository {
   }
 
   @override
-  List<Training> getUserTrainings(String userId) {
+  Future<List<Training>> getUserTrainings(String userId) async {
+    await Future.delayed(Duration(seconds: 3));
     return _trainings.where((training) => training.userId == userId).toList();
   }
 
   @override
-  void addTraining(Training training) {
+  Future<void> addTraining(Training training) async {
+    await Future.delayed(Duration(seconds: 3));
     _trainings.add(training);
   }
 }

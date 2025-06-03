@@ -13,6 +13,8 @@ class AnmeldungScreen extends StatefulWidget {
 class _AnmeldungScreenState extends State<AnmeldungScreen> {
   String userInput1 = "";
   String userInput2 = "";
+
+  int y = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +57,8 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                   onChanged: (text) {
                     userInput1 = text;
                   },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: validateEmailadresse,
                   decoration: InputDecoration(
                     hintText: 'Gib deine E-Mail-Adresse ein',
                     filled: true,
@@ -94,10 +98,19 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (userInput1 == 'ww' && userInput2 == 'hola') {
+                    if (userInput1 == 'www' && userInput2 == 'hola') {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => HauptScreen(widget.db),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content:
+                              Text("Emailadresse oder Passwort inkorrekt!"),
+                          backgroundColor:
+                              const Color.fromARGB(255, 83, 66, 63),
                         ),
                       );
                     }
@@ -132,4 +145,22 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
       ),
     );
   }
+}
+
+String? validateEmailadresse(value) {
+  if (value == null || value.length < 3) {
+    return 'Mindestens 3 Buchstaben';
+  }
+  if (value.length > 10) {
+    return 'Maximal 10 Buchstaben';
+  }
+  if (value.contains(" ")) {
+    return "Keine Leerzeichen erlaubt";
+  }
+  String x = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYT0123456789';
+  if (!x.contains(value[0])) {
+    return ('Sonderzeichen am Anfang nicht erlaubt');
+  }
+
+  return null;
 }

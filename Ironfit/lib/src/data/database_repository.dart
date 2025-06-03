@@ -3,13 +3,13 @@ import 'package:flutter_application_9/src/features/training/domain/training.dart
 
 abstract class DatabaseRepository {
   // on sign in
-  UserProfile? getUserProfile(String userId);
+  Future<UserProfile?> getUserProfile(String userId);
   // on sign up
-  void createUserProfile(UserProfile profile);
+  Future<void> createUserProfile(UserProfile profile);
   // on change profile
-  void updateUserProfile(UserProfile profile);
+  Future<void> updateUserProfile(UserProfile profile);
 
   // Training
-  List<Training> getUserTrainings(String userId);
-  void addTraining(Training training);
+  Future<List<Training>> getUserTrainings(String userId);
+  Future<void> addTraining(Training training);
 }
