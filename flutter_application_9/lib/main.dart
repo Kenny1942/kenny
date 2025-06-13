@@ -26,8 +26,25 @@ class MainApp extends StatelessWidget {
     final jsonObject = jsonDecode(a);
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [Text('IP: ${jsonObject['ip']}')],
+        body: Center(
+          child: Column(
+            children: [
+              // ListView.builder(
+              //   itemCount: jsonObject.lenght,
+              //   itemBuilder: (context, index) {
+              //     final key = jsonObject.keys.elementAt(index);
+              //     final value = jsonObject[key];
+              //     return ListTile(
+              //       title: Text('$key'),
+              //       subtitle: Text('$value'),
+              //     );
+              //   },
+              // ),
+              Text('IP: ${jsonObject['ip']}'),
+              Text('City: ${jsonObject['city']}'),
+              Text('Timezone: ${jsonObject['timezone']}')
+            ],
+          ),
         ),
       ),
     );
