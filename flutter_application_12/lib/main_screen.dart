@@ -11,6 +11,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   late Future<User> _user;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -50,10 +51,29 @@ class _MainScreenState extends State<MainScreen> {
                   FilledButton(
                     onPressed: () async {
                       setState(() {
-                        _user = CreatingUser().getRandomUser();
+                        isLoading = true;
+                      });
+                      final userFuture = CreatingUser().getRandomUser();
+
+                      setState(() {
+                        _user = userFuture;
+                      });
+
+                      await userFuture; // Espera a que el future termine
+                      setState(() {
+                        isLoading = false;
                       });
                     },
-                    child: Text('neuer Kandidat'),
+                    child: isLoading
+                        ? SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text('neuer Kandidat'),
                   ),
                 ],
               ),
