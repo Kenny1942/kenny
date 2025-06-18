@@ -17,7 +17,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   String _answer = '';
   String _forced = '';
-  String _image = '';
+  String _image = 'https://i.imgur.com/qIufhof.png';
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,6 @@ class _MainAppState extends State<MainApp> {
         body: Center(
           child: Column(
             children: [
-              Text('IP'),
               FilledButton(
                 onPressed: () async {
                   setState(() {
@@ -54,8 +53,16 @@ class _MainAppState extends State<MainApp> {
                       )
                     : Text('Load info'),
               ),
+              Image.network(
+                _image,
+                width: 300,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 50,
+              ),
               Text('Hat dir mein Beispiel gefallen??? : ${_answer}'),
-              Image.network(_image),
             ],
           ),
         ),
