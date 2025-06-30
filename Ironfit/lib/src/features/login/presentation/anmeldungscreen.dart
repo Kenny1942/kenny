@@ -25,7 +25,7 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
             child: Image.asset('assets/images/backg.png', fit: BoxFit.fill),
           ),
           Container(
-            color: const Color.fromARGB(255, 211, 200, 200).withOpacity(0.9),
+            color: const Color.fromARGB(255, 211, 200, 200),
           ),
           Positioned(
             left: 0,

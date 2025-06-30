@@ -59,7 +59,7 @@ class _MainScreenState extends State<MainScreen> {
                         _user = userFuture;
                       });
 
-                      await userFuture; // Espera a que el future termine
+                      await userFuture; // wait until future is ready
                       setState(() {
                         isLoading = false;
                       });

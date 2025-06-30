@@ -19,21 +19,23 @@ class _TrainingState extends State<Training1> {
   void _formOpen(String exercise) {
     showDialog(
       context: context,
-      builder: (context) => TrainingForm(name: exercise),
+      builder: (context) => TrainingForm(widget.db, name: exercise),
     );
   }
 
-  Widget _trainingButton(String nombre, IconData icon) {
+  Widget _trainingButton(String name, IconData icon) {
     return InkWell(
-      onTap: () => _formOpen(nombre),
+      onTap: () => _formOpen(name),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Row(
           children: [
-            Icon(icon, size: 32, color: Colors.white),
+            Icon(icon,
+                size: 32, color: const Color.fromARGB(255, 255, 255, 255)),
             const SizedBox(width: 16),
-            Text(nombre,
-                style: const TextStyle(fontSize: 20, color: Colors.white)),
+            Text(name,
+                style: const TextStyle(
+                    fontSize: 20, color: Color.fromARGB(255, 232, 237, 230))),
           ],
         ),
       ),

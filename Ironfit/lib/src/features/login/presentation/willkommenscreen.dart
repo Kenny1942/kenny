@@ -21,7 +21,7 @@ class WillkommenScreen extends StatelessWidget {
           Container(
             height: double.infinity,
             width: double.infinity,
-            color: const Color.fromARGB(255, 211, 200, 200).withOpacity(0.9),
+            color: const Color.fromARGB(255, 211, 200, 200),
           ),
           Positioned(
             child: Image.asset(

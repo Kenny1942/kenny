@@ -21,7 +21,7 @@ class _HauptScreenState extends State<HauptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(  
       body: Stack(
         children: [
           //geteilte hintergrund
@@ -29,7 +29,7 @@ class _HauptScreenState extends State<HauptScreen> {
             child: Image.asset('assets/images/backg.png', fit: BoxFit.fill),
           ),
           Container(
-            color: const Color.fromARGB(255, 211, 200, 200).withOpacity(0.9),
+            color: const Color.fromARGB(255, 211, 200, 200),
           ),
           Positioned(
             left: 0,

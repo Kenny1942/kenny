@@ -22,52 +22,57 @@ class _FreundeState extends State<Berichte> {
   late Future<List<Training>> training;
   @override
   void initState() {
-    training = widget.db.getUserTrainings('user1');
+    training = widget.db.getUserTrainings('user2');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        SizedBox(
-          height: 150,
-        ),
-        Text(
-          'Zusammenfassung',
-          style: TextStyle(fontSize: 20),
-        ),
-        Expanded(
-          child: FutureBuilder(
-            future: training,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}'),
-                );
-              }
-              final trainings = snapshot.data!;
-              if (trainings.isEmpty) {
-                return Center(child: Text('Keine Trainings'));
-              }
-              return ListView.builder(
-                itemCount: trainings.length,
-                itemBuilder: (context, index) {
-                  final t = trainings[index];
-                  return ListTile(
-                    title: Text(t.type.toString()),
-                    subtitle: Text(t.date.toLocal().toString()),
-                  );
-                },
+        FutureBuilder(
+          future: training,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
               );
-            },
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            }
+            final trainings = snapshot.data!;
+            if (trainings.isEmpty) {
+              return Center(child: Text('Keine Trainings'));
+            }
+            return ListView.builder(
+              padding: const EdgeInsets.only(top: 200.0),
+              itemCount: trainings.length,
+              itemBuilder: (context, index) {
+                final t = trainings[index];
+                return ListTile(
+                  title: Text(t.type.toString()),
+                  subtitle: Text(t.date.toLocal().toString()),
+                );
+              },
+            );
+          },
+        ),
+        SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 80.0, left: 8.0),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: widget.back,
+            ),
           ),
         ),
+        Positioned(
+            top: 150,
+            left: 150,
+            child: Text(widget.title, style: const TextStyle(fontSize: 24))),
       ],
     );
   }

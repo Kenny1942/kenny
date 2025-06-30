@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:flutter_application_9/src/features/training/domain/training.dart';
+import 'package:intl/intl.dart';
 
 class TrainingForm extends StatefulWidget {
+  final DatabaseRepository db;
   final String name;
 
-  const TrainingForm({super.key, required this.name});
+  const TrainingForm(this.db, {super.key, required this.name});
 
   @override
   State<TrainingForm> createState() => _ExerciseFormState();
 }
 
 class _ExerciseFormState extends State<TrainingForm> {
-  final TextEditingController _datumController = TextEditingController();
-  final TextEditingController _beginnController = TextEditingController();
+  final TextEditingController _notesController = TextEditingController();
   final TextEditingController _dauerController = TextEditingController();
   final TextEditingController _distanzController = TextEditingController();
 
   double _kalorien = 0;
+  DateTime _selectedDate = DateTime.now();
 
   void _kalorienBerechnung() {
     final dauer = double.tryParse(_dauerController.text) ?? 0;
@@ -26,12 +30,29 @@ class _ExerciseFormState extends State<TrainingForm> {
     });
   }
 
+  TrainingType _parseTrainingType(String name) {
+    switch (name) {
+      case 'Joggen':
+        return TrainingType.running;
+      case 'Schwimmen':
+        return TrainingType.swimming;
+      case 'Gehen':
+        return TrainingType.yoga;
+      case 'Workout':
+        return TrainingType.weightlifting;
+      case 'Radfahren':
+        return TrainingType.cycling;
+      default:
+        return TrainingType.other;
+    }
+  }
+
   @override
   void dispose() {
-    _datumController.dispose();
-    _beginnController.dispose();
     _dauerController.dispose();
     _distanzController.dispose();
+
+    _notesController.dispose();
     super.dispose();
   }
 
@@ -42,23 +63,35 @@ class _ExerciseFormState extends State<TrainingForm> {
       content: SingleChildScrollView(
         child: Column(
           children: [
-            TextField(
-              controller: _datumController,
-              decoration: const InputDecoration(labelText: 'Datum'),
-            ),
-            TextField(
-              controller: _beginnController,
-              decoration: const InputDecoration(labelText: 'Beginn'),
+            TextButton(
+              onPressed: () async {
+                DateTime? newDate = await showDatePicker(
+                  context: context,
+                  firstDate: DateTime.now().subtract(const Duration(days: 700)),
+                  lastDate: DateTime.now().add(Duration(days: 1)),
+                );
+                if (newDate != null) {
+                  setState(() {
+                    _selectedDate = newDate;
+                  });
+                }
+              },
+              child: Text(
+                  "Wähle Datum aus: ${DateFormat.yMMMEd('de').format(_selectedDate)}"),
             ),
             TextField(
               controller: _dauerController,
-              decoration: const InputDecoration(labelText: 'Dauer (min)'),
-              keyboardType: TextInputType.number,
-              onChanged: (_) => _kalorienBerechnung(),
+              decoration: const InputDecoration(labelText: 'Dauer (Min)'),
             ),
             TextField(
               controller: _distanzController,
               decoration: const InputDecoration(labelText: 'Distanz (km)'),
+              keyboardType: TextInputType.number,
+              onChanged: (_) => _kalorienBerechnung(),
+            ),
+            TextField(
+              controller: _notesController,
+              decoration: const InputDecoration(labelText: 'Notes'),
               keyboardType: TextInputType.number,
               onChanged: (_) => _kalorienBerechnung(),
             ),
@@ -69,7 +102,20 @@ class _ExerciseFormState extends State<TrainingForm> {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Training t = Training(
+              date: _selectedDate,
+              duration: Duration(minutes: int.parse(_dauerController.text)),
+              userId: "user2",
+              id: "1",
+              type: _parseTrainingType(widget.name),
+              caloriesBurned: _kalorien,
+              notes: _notesController.text,
+            );
+            widget.db.addTraining(t);
+
+            Navigator.pop(context);
+          },
           child: const Text('Speichern'),
         ),
       ],
