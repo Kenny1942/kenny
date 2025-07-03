@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/src/data/auth_repository.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/login/presentation/anmeldungscreen.dart';
+import 'package:flutter_application_9/src/features/login/presentation/registrierung_screen.dart';
 
 class WillkommenScreen extends StatelessWidget {
   final DatabaseRepository db;
+  final AuthRepository auth;
 
-  const WillkommenScreen(this.db, {super.key});
+  const WillkommenScreen(this.db, this.auth, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +68,7 @@ class WillkommenScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => AnmeldungScreen(db),
+                        builder: (context) => AnmeldungScreen(db, auth),
                       ),
                     );
                   },
@@ -95,7 +98,13 @@ class WillkommenScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => RegistrierungScreen(db, auth),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Hier einloggen',
                     style: TextStyle(

@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/common/widgets/buildmenu.dart';
+import 'package:flutter_application_9/src/data/auth_repository.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/berichte/presentation/berichte.dart';
 import 'package:flutter_application_9/src/features/freunde/presentation/freunde.dart';
@@ -10,7 +12,9 @@ enum MenuView { menu, freunde, training, reminders, berichte }
 
 class HauptScreen extends StatefulWidget {
   final DatabaseRepository db;
-  const HauptScreen(this.db, {super.key});
+  final AuthRepository auth;
+
+  const HauptScreen(this.db, this.auth, {super.key});
 
   @override
   State<HauptScreen> createState() => _HauptScreenState();
@@ -21,7 +25,7 @@ class _HauptScreenState extends State<HauptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
+    return Scaffold(
       body: Stack(
         children: [
           //geteilte hintergrund
@@ -37,6 +41,16 @@ class _HauptScreenState extends State<HauptScreen> {
             child: Image.asset('assets/images/logo5.png'),
           ),
           Positioned.fill(child: _buildBody()),
+          Positioned(
+            left: 10,
+            bottom: 20,
+            child: ElevatedButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+              },
+              child: Text("Logout"),
+            ),
+          ),
         ],
       ),
     );
