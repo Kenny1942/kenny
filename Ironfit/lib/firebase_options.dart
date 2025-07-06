@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '939714197051',
     projectId: 'ironfit-1ff39',
     storageBucket: 'ironfit-1ff39.firebasestorage.app',
+    androidClientId: '939714197051-ct8p2evcjvha92hiru43mos7c8156jdo.apps.googleusercontent.com',
+    iosClientId: '939714197051-lf027oi3onrn4ji6la3b956tdilt2hpv.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterApplication9',
   );
+
 }

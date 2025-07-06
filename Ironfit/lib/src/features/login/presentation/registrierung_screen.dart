@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/auth_repository.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
-import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
 class RegistrierungScreen extends StatefulWidget {
   final DatabaseRepository db;
@@ -57,7 +56,7 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                 ),
                 Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('E-MAIL-ADRESSE')),
+                    child: Text('Anmelden mit deiner E-mail-adresse')),
                 SizedBox(
                   height: 40,
                 ),
@@ -80,7 +79,7 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                 SizedBox(
                   height: 50,
                 ),
-                Align(alignment: Alignment.centerLeft, child: Text('KENNWORT')),
+                Align(alignment: Alignment.centerLeft, child: Text('Kennwort')),
                 SizedBox(
                   height: 40,
                 ),
@@ -90,7 +89,7 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                   },
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: 'Gib dein Passwort ein',
+                    hintText: 'Passwort',
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -162,11 +161,19 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Image.asset('assets/images/Facebook.png'),
+                GestureDetector(
+                  child: Image.asset('assets/images/Facebook.png'),
+                  onTap: () {},
+                ),
                 SizedBox(
                   height: 10,
                 ),
-                Image.asset('assets/images/Google.png'),
+                GestureDetector(
+                  child: Image.asset('assets/images/Google.png'),
+                  onTap: () async {
+                    await widget.auth.signInWithGoogle();
+                  },
+                ),
               ],
             ),
           ),
