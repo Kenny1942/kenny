@@ -5,6 +5,8 @@ import 'package:flutter_application_9/src/data/auth_repository.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/berichte/presentation/berichte.dart';
 import 'package:flutter_application_9/src/features/freunde/presentation/freunde.dart';
+import 'package:flutter_application_9/src/features/home/presentation/profile.dart';
+import 'package:flutter_application_9/src/features/login/presentation/willkommenscreen.dart';
 import 'package:flutter_application_9/src/features/training/presentation/training.dart';
 import 'package:flutter_application_9/src/features/reminders/presentation/reminders.dart';
 
@@ -22,35 +24,79 @@ class HauptScreen extends StatefulWidget {
 
 class _HauptScreenState extends State<HauptScreen> {
   MenuView _currentView = MenuView.menu;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration:
+                  BoxDecoration(color: const Color.fromARGB(255, 152, 11, 23)),
+              child: Text('Optionen',
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Mein Profil'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ProfileScreen(widget.db),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () async {
+                Navigator.pop(context);
+                await FirebaseAuth.instance.signOut();
+                if (!mounted) return;
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => WillkommenScreen(widget.db, widget.auth),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: [
-          //geteilte hintergrund
+          // hintergrund
           Positioned.fill(
             child: Image.asset('assets/images/backg.png', fit: BoxFit.fill),
           ),
           Container(
-            color: const Color.fromARGB(255, 211, 200, 200),
+            color: const Color.fromARGB(255, 211, 200, 200).withOpacity(0.5),
           ),
+          // bild oben
           Positioned(
             left: 0,
             top: -320,
             child: Image.asset('assets/images/logo5.png'),
           ),
-          Positioned.fill(child: _buildBody()),
+          // Burger icon
           Positioned(
             left: 10,
-            bottom: 20,
-            child: ElevatedButton(
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+            top: 40,
+            child: IconButton(
+              icon: Icon(Icons.menu, size: 30, color: Colors.black),
+              onPressed: () {
+                _scaffoldKey.currentState!.openDrawer();
               },
-              child: Text("Logout"),
             ),
           ),
+
+          Positioned.fill(child: _buildBody()),
         ],
       ),
     );
@@ -86,6 +132,7 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Freunde',
       );
+
   Widget _buildTraining() => Training1(
         widget.db,
         back: () {
@@ -95,6 +142,7 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Training',
       );
+
   Widget _buildReminders() => Reminders(
         back: () {
           setState(() {
@@ -103,6 +151,7 @@ class _HauptScreenState extends State<HauptScreen> {
         },
         title: 'Reminders',
       );
+
   Widget _buildBerichte() => Berichte(
         widget.db,
         back: () {

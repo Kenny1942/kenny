@@ -44,7 +44,7 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                   height: 170,
                 ),
                 Text(
-                  'ANMELDEN',
+                  'Anmelden',
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                 ),
                 SizedBox(

@@ -40,8 +40,8 @@ class UserProfile {
       name: map['name'],
       dateOfBirth: (map['dateOfBirth'] as Timestamp).toDate(),
       weight: map['weight'],
-      height: map['heigth'],
-      gender: Gender.values.byName(map['gender.name']),
+      height: map['height'],
+      gender: Gender.values.byName(map['gender']),
     );
   }
 }

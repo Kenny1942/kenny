@@ -107,7 +107,7 @@ class _ExerciseFormState extends State<TrainingForm> {
               date: _selectedDate,
               duration: Duration(minutes: int.parse(_dauerController.text)),
               userId: "user2",
-              id: "1",
+              id: "3",
               type: _parseTrainingType(widget.name),
               caloriesBurned: _kalorien,
               notes: _notesController.text,
