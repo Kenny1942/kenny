@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/training/domain/training.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class TrainingForm extends StatefulWidget {
-  final DatabaseRepository db;
   final String name;
 
-  const TrainingForm(this.db, {super.key, required this.name});
+  const TrainingForm({super.key, required this.name});
 
   @override
   State<TrainingForm> createState() => _ExerciseFormState();
@@ -112,7 +112,9 @@ class _ExerciseFormState extends State<TrainingForm> {
               caloriesBurned: _kalorien,
               notes: _notesController.text,
             );
-            widget.db.addTraining(t);
+            final db = Provider.of<DatabaseRepository>(context, listen: false);
+
+            db.addTraining(t);
 
             Navigator.pop(context);
           },

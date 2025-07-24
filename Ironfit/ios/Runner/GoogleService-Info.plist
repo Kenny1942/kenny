@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>939714197051-lf027oi3onrn4ji6la3b956tdilt2hpv.apps.googleusercontent.com</string>
+	<string>939714197051-npihhd61hijpi7i5eaaf2em8l8b09u7t.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.939714197051-lf027oi3onrn4ji6la3b956tdilt2hpv</string>
+	<string>com.googleusercontent.apps.939714197051-npihhd61hijpi7i5eaaf2em8l8b09u7t</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>939714197051-ct8p2evcjvha92hiru43mos7c8156jdo.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.flutterApplication9</string>
+	<string>com.kennymohr.fitnessapp</string>
 	<key>PROJECT_ID</key>
 	<string>ironfit-1ff39</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:939714197051:ios:ad8927318bd65160a70e1e</string>
+	<string>1:939714197051:ios:28a37f7c6eae2790a70e1e</string>
 </dict>
 </plist>

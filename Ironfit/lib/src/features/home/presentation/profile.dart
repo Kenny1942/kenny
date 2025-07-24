@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
-import 'package:flutter_application_9/src/data/firestore_repository.dart';
 import 'package:flutter_application_9/src/features/login/domain/user_profile.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final DatabaseRepository db;
-
-  const ProfileScreen(this.db, {super.key});
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -33,7 +31,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _loadProfile() async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
-    final profile = await widget.db.getUserProfile(uid);
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final profile = await db.getUserProfile(uid);
 
     if (profile != null) {
       _profile = profile;
@@ -42,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _heightController.text = profile.height.toString();
       _selectedGender = profile.gender;
     } else {
-      // No existe el perfil, inicializa valores vacíos
+      // wenn profil nicht existiert, leere werte werden initializiert
       _profile = UserProfile(
         id: uid,
         userId: uid,
@@ -63,6 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!_formKey.currentState!.validate()) return;
 
     final uid = FirebaseAuth.instance.currentUser!.uid;
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
 
     final updatedProfile = UserProfile(
       id: _profile!.id,
@@ -75,13 +75,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
 
     if (_profile != null) {
-      await widget.db.updateUserProfile(updatedProfile);
+      await db.updateUserProfile(updatedProfile);
     } else {
-      await widget.db.createUserProfile(updatedProfile);
+      await db.createUserProfile(updatedProfile);
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Perfil actualizado')),
+      SnackBar(content: Text('Profil aktualisiert')),
     );
   }
 

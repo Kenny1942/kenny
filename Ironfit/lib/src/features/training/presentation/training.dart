@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/training/presentation/trainingsformular.dart';
 
 class Training1 extends StatefulWidget {
-  final DatabaseRepository db;
-
   final String title;
   final VoidCallback back;
 
-  const Training1(this.db,
-      {super.key, required this.title, required this.back});
+  const Training1({super.key, required this.title, required this.back});
 
   @override
   State<Training1> createState() => _TrainingState();
@@ -19,7 +15,7 @@ class _TrainingState extends State<Training1> {
   void _formOpen(String exercise) {
     showDialog(
       context: context,
-      builder: (context) => TrainingForm(widget.db, name: exercise),
+      builder: (context) => TrainingForm(name: exercise),
     );
   }
 
