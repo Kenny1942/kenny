@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_application_9/src/data/auth_repository.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
@@ -7,13 +8,12 @@ import 'package:flutter_application_9/src/features/login/presentation/registrier
 import 'package:flutter_application_9/src/features/login/presentation/willkommenscreen.dart';
 
 class MainApp extends StatelessWidget {
-  final DatabaseRepository db;
-  final AuthRepository auth;
-
-  const MainApp(this.db, this.auth, {super.key});
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final auth = Provider.of<AuthRepository>(context, listen: false);
     return StreamBuilder(
       stream: auth.authStateChanges(),
       builder: (context, snapshot) {
@@ -22,12 +22,11 @@ class MainApp extends StatelessWidget {
           theme: ThemeData(),
           initialRoute: '/',
           routes: {
-            '/': (context) => snapshot.hasData
-                ? HauptScreen(db, auth)
-                : WillkommenScreen(db, auth),
-            '/login': (context) => AnmeldungScreen(db, auth),
-            '/signup': (context) => RegistrierungScreen(db, auth),
-            '/home': (context) => HauptScreen(db, auth),
+            '/': (context) =>
+                snapshot.hasData ? HauptScreen() : WillkommenScreen(),
+            '/login': (context) => AnmeldungScreen(),
+            '/signup': (context) => RegistrierungScreen(),
+            '/home': (context) => HauptScreen(),
           },
         );
       },

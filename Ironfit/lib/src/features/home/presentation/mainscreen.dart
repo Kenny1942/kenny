@@ -9,14 +9,12 @@ import 'package:flutter_application_9/src/features/home/presentation/profile.dar
 import 'package:flutter_application_9/src/features/login/presentation/willkommenscreen.dart';
 import 'package:flutter_application_9/src/features/training/presentation/training.dart';
 import 'package:flutter_application_9/src/features/reminders/presentation/reminders.dart';
+import 'package:provider/provider.dart';
 
 enum MenuView { menu, freunde, training, reminders, berichte }
 
 class HauptScreen extends StatefulWidget {
-  final DatabaseRepository db;
-  final AuthRepository auth;
-
-  const HauptScreen(this.db, this.auth, {super.key});
+  const HauptScreen({super.key});
 
   @override
   State<HauptScreen> createState() => _HauptScreenState();
@@ -28,6 +26,8 @@ class _HauptScreenState extends State<HauptScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final auth = Provider.of<AuthRepository>(context, listen: false);
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
@@ -47,7 +47,7 @@ class _HauptScreenState extends State<HauptScreen> {
                 Navigator.pop(context);
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => ProfileScreen(widget.db),
+                    builder: (_) => ProfileScreen(),
                   ),
                 );
               },
@@ -61,7 +61,7 @@ class _HauptScreenState extends State<HauptScreen> {
                 if (!mounted) return;
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (_) => WillkommenScreen(widget.db, widget.auth),
+                    builder: (_) => WillkommenScreen(),
                   ),
                 );
               },
@@ -134,7 +134,6 @@ class _HauptScreenState extends State<HauptScreen> {
       );
 
   Widget _buildTraining() => Training1(
-        widget.db,
         back: () {
           setState(() {
             _currentView = MenuView.menu;
@@ -153,7 +152,6 @@ class _HauptScreenState extends State<HauptScreen> {
       );
 
   Widget _buildBerichte() => Berichte(
-        widget.db,
         back: () {
           setState(() {
             _currentView = MenuView.menu;

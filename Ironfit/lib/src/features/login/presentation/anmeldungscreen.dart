@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/src/data/auth_repository.dart';
-import 'package:flutter_application_9/src/data/database_repository.dart';
+
 import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
 class AnmeldungScreen extends StatefulWidget {
-  final DatabaseRepository db;
-  final AuthRepository auth;
-
-  const AnmeldungScreen(this.db, this.auth, {super.key});
+  const AnmeldungScreen({super.key});
 
   @override
   State<AnmeldungScreen> createState() => _AnmeldungScreenState();
@@ -104,8 +100,7 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                     if (userInput1 == 'www' && userInput2 == 'hola') {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>
-                              HauptScreen(widget.db, widget.auth),
+                          builder: (context) => HauptScreen(),
                         ),
                       );
                     } else {

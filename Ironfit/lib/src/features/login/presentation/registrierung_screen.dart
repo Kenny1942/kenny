@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/auth_repository.dart';
-import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:provider/provider.dart';
 
 class RegistrierungScreen extends StatefulWidget {
-  final DatabaseRepository db;
-  final AuthRepository auth;
-
-  const RegistrierungScreen(this.db, this.auth, {super.key});
+  const RegistrierungScreen({super.key});
 
   @override
   State<RegistrierungScreen> createState() => _RegistrierungScreenState();
@@ -17,8 +14,10 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
   String userInput2 = "";
   String userInput3 = "";
 
-  Future<void> _onSubmit(String email, String pw) async {
-    await widget.auth.createUserWithEmailAndPassword(email, pw);
+  Future<void> _onSubmit(BuildContext context, String email, String pw) async {
+    final auth = Provider.of<AuthRepository>(context, listen: false);
+
+    await auth.createUserWithEmailAndPassword(email, pw);
   }
 
   int y = 0;
@@ -139,6 +138,7 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                     //   );
                     // }
                     await _onSubmit(
+                      context,
                       userInput1,
                       userInput2,
                     );
@@ -171,7 +171,9 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
                 GestureDetector(
                   child: Image.asset('assets/images/Google.png'),
                   onTap: () async {
-                    await widget.auth.signInWithGoogle();
+                    final auth =
+                        Provider.of<AuthRepository>(context, listen: false);
+                    await auth.signInWithGoogle();
                   },
                 ),
               ],

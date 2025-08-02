@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/src/data/auth_repository.dart';
-import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/login/presentation/anmeldungscreen.dart';
 import 'package:flutter_application_9/src/features/login/presentation/registrierung_screen.dart';
 
 class WillkommenScreen extends StatelessWidget {
-  final DatabaseRepository db;
-  final AuthRepository auth;
-
-  const WillkommenScreen(this.db, this.auth, {super.key});
+  const WillkommenScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +63,7 @@ class WillkommenScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => AnmeldungScreen(db, auth),
+                        builder: (context) => AnmeldungScreen(),
                       ),
                     );
                   },
@@ -87,7 +82,7 @@ class WillkommenScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 70),
+                SizedBox(height: 50),
                 Text(
                   'Schon bei IronFit registriert',
                   style: TextStyle(
@@ -101,7 +96,7 @@ class WillkommenScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => RegistrierungScreen(db, auth),
+                        builder: (context) => RegistrierungScreen(),
                       ),
                     );
                   },

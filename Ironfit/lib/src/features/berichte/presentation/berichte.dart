@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/training/domain/training.dart';
+import 'package:provider/provider.dart';
 
 class Berichte extends StatefulWidget {
-  final DatabaseRepository db;
   final String title;
   final VoidCallback back;
 
-  const Berichte(
-    this.db, {
+  const Berichte({
     super.key,
     required this.title,
     required this.back,
@@ -22,7 +21,9 @@ class _FreundeState extends State<Berichte> {
   late Future<List<Training>> training;
   @override
   void initState() {
-    training = widget.db.getUserTrainings('user2');
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+
+    training = db.getUserTrainings('user2');
     super.initState();
   }
 
