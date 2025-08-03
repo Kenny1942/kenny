@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/src/features/home/presentation/mainscreen.dart';
 
 class AnmeldungScreen extends StatefulWidget {
@@ -96,20 +96,31 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                   height: 50,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    if (userInput1 == 'www' && userInput2 == 'hola') {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => HauptScreen(),
-                        ),
+                  onPressed: () async {
+                    try {
+                      final credential = await FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                        email: userInput1.trim(),
+                        password: userInput2,
                       );
-                    } else {
+
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => HauptScreen()),
+                      );
+                    } on FirebaseAuthException catch (e) {
+                      String message = '';
+                      if (e.code == 'user-not-found') {
+                        message = 'Kein Benutzer gefunden für diese E-Mail.';
+                      } else if (e.code == 'wrong-password') {
+                        message = 'Falsches Passwort.';
+                      } else {
+                        message = 'Fehler: ${e.message}';
+                      }
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content:
-                              Text("Emailadresse oder Passwort inkorrekt!"),
-                          backgroundColor:
-                              const Color.fromARGB(255, 83, 66, 63),
+                          content: Text(message),
+                          backgroundColor: Colors.red,
                         ),
                       );
                     }

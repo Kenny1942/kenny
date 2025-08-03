@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/training/domain/training.dart';
@@ -102,19 +103,20 @@ class _ExerciseFormState extends State<TrainingForm> {
       ),
       actions: [
         TextButton(
-          onPressed: () {
+          onPressed: () async {
+            final uid = FirebaseAuth.instance.currentUser!.uid;
+            final newId = DateTime.now().millisecondsSinceEpoch.toString();
             Training t = Training(
               date: _selectedDate,
               duration: Duration(minutes: int.parse(_dauerController.text)),
-              userId: "user2",
-              id: "3",
+              userId: uid,
+              id: newId,
               type: _parseTrainingType(widget.name),
               caloriesBurned: _kalorien,
               notes: _notesController.text,
             );
             final db = Provider.of<DatabaseRepository>(context, listen: false);
-
-            db.addTraining(t);
+            await db.addTraining(t);
 
             Navigator.pop(context);
           },

@@ -7,8 +7,12 @@ class FirestoreRepository implements DatabaseRepository {
   final fs = FirebaseFirestore.instance;
 
   @override
-  Future<List<Training>> getUserTrainings(String trainingId) async {
-    final snaps = await fs.collection('trainings').get();
+  Future<List<Training>> getUserTrainings(String userId) async {
+    final snaps = await fs
+        .collection('trainings')
+        .where('userId', isEqualTo: userId)
+        .get();
+
     return snaps.docs.map((e) {
       return Training.fromMap(e.data());
     }).toList();
@@ -16,7 +20,10 @@ class FirestoreRepository implements DatabaseRepository {
 
   @override
   Future<void> addTraining(Training training) async {
-    await fs.collection('trainings').doc(training.id).set(training.toMap());
+    await fs.collection('trainings').doc(training.id).set({
+      ...training.toMap(),
+      'userId': training.userId, // Asegurate de incluir esto en el modelo
+    });
   }
 
   @override
@@ -36,6 +43,9 @@ class FirestoreRepository implements DatabaseRepository {
 
   @override
   Future<void> updateUserProfile(UserProfile profile) async {
-    await fs.collection('users').doc(profile.userId).update(profile.toMap());
+    await fs
+        .collection('users')
+        .doc(profile.userId)
+        .set(profile.toMap(), SetOptions(merge: true));
   }
 }

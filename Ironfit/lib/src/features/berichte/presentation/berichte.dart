@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:flutter_application_9/src/features/training/domain/training.dart';
@@ -21,10 +22,11 @@ class _FreundeState extends State<Berichte> {
   late Future<List<Training>> training;
   @override
   void initState() {
-    final db = Provider.of<DatabaseRepository>(context, listen: false);
-
-    training = db.getUserTrainings('user2');
     super.initState();
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    training = db.getUserTrainings(uid);
   }
 
   @override
