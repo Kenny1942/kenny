@@ -19,6 +19,38 @@ class Berichte extends StatefulWidget {
 }
 
 class _FreundeState extends State<Berichte> {
+  String _formatTrainingType(TrainingType type) {
+    switch (type) {
+      case TrainingType.running:
+        return 'Laufen';
+      case TrainingType.cycling:
+        return 'Radfahren';
+      case TrainingType.swimming:
+        return 'Schwimmen';
+      case TrainingType.weightlifting:
+        return 'Gewichtheben';
+      case TrainingType.yoga:
+        return 'Yoga';
+      case TrainingType.other:
+        return 'Andere';
+    }
+  }
+
+  String _formatDate(DateTime date) {
+    return "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}";
+  }
+
+  String _formatDuration(Duration duration) {
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes % 60;
+    final seconds = duration.inSeconds % 60;
+    if (hours > 0) {
+      return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    } else {
+      return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    }
+  }
+
   late Future<List<Training>> training;
   @override
   void initState() {
@@ -55,9 +87,31 @@ class _FreundeState extends State<Berichte> {
               itemCount: trainings.length,
               itemBuilder: (context, index) {
                 final t = trainings[index];
-                return ListTile(
-                  title: Text(t.type.toString()),
-                  subtitle: Text(t.date.toLocal().toString()),
+
+                // Formateos
+                final trainingType = _formatTrainingType(t.type);
+                final formattedDate = _formatDate(t.date);
+                final formattedDuration = _formatDuration(t.duration);
+                final calories = "${t.caloriesBurned.toStringAsFixed(0)} kcal";
+
+                return Card(
+                  color: Color.fromARGB(255, 193, 205, 133),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: ListTile(
+                    leading: const Icon(Icons.fitness_center),
+                    title: Text(trainingType,
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Dauer: $formattedDuration"),
+                        Text("Datum: $formattedDate"),
+                        Text("Kalorien: $calories"),
+                        if (t.notes.isNotEmpty) Text("Notes: ${t.notes}"),
+                      ],
+                    ),
+                  ),
                 );
               },
             );

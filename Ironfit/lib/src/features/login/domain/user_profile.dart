@@ -6,6 +6,7 @@ class UserProfile {
   final String id;
   final String userId;
   final String name;
+  final String? email;
   final DateTime dateOfBirth;
   final double weight;
   final double height;
@@ -15,6 +16,7 @@ class UserProfile {
     required this.id,
     required this.userId,
     required this.name,
+    this.email,
     required this.dateOfBirth,
     required this.weight,
     required this.height,
@@ -26,6 +28,7 @@ class UserProfile {
       'id': id,
       'userId': userId,
       'name': name,
+      if (email != null) 'email': email,
       'dateOfBirth': dateOfBirth,
       'weight': weight,
       'height': height,
@@ -38,6 +41,7 @@ class UserProfile {
       id: map['id'],
       userId: map['userId'],
       name: map['name'],
+      email: map['email'],
       dateOfBirth: (map['dateOfBirth'] as Timestamp).toDate(),
       weight: map['weight'],
       height: map['height'],

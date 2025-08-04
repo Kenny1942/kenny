@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/src/data/database_repository.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Reminders extends StatefulWidget {
   final String title;
@@ -15,6 +18,23 @@ class Reminders extends StatefulWidget {
 }
 
 class _RemindersState extends State<Reminders> {
+  @override
+  void initState() {
+    super.initState();
+    _loadRemindersFromFirestore();
+  }
+
+  void _loadRemindersFromFirestore() async {
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) return;
+
+    final reminders = await db.loadReminders(userId);
+    setState(() {
+      _reminders.addAll(reminders);
+    });
+  }
+
   final List<Map<String, dynamic>> _reminders = [];
 
   void _addReminder() {
@@ -40,20 +60,31 @@ class _RemindersState extends State<Reminders> {
             },
           });
         });
+        _saveRemindersToFirestore();
       }
     });
+  }
+
+  void _saveRemindersToFirestore() {
+    final db = Provider.of<DatabaseRepository>(context, listen: false);
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) return;
+
+    db.saveReminders(userId, _reminders);
   }
 
   void _deleteReminder(int index) {
     setState(() {
       _reminders.removeAt(index);
     });
+    _saveRemindersToFirestore();
   }
 
   void _toggleActive(int index, bool value) {
     setState(() {
       _reminders[index]['active'] = value;
     });
+    _saveRemindersToFirestore();
   }
 
   @override
@@ -122,14 +153,14 @@ class _RemindersState extends State<Reminders> {
                                   .entries
                                   .map((entry) {
                                 return FilterChip(
-                                  label: Text(entry.key),
-                                  selected: entry.value,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      reminder['days'][entry.key] = selected;
+                                    label: Text(entry.key),
+                                    selected: entry.value,
+                                    onSelected: (bool selected) {
+                                      setState(() {
+                                        reminder['days'][entry.key] = selected;
+                                      });
+                                      _saveRemindersToFirestore();
                                     });
-                                  },
-                                );
                               }).toList(),
                             ),
                           ],

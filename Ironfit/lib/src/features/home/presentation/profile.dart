@@ -46,6 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         id: uid,
         userId: uid,
         name: '',
+        email: '',
         dateOfBirth: DateTime.now(),
         weight: 0,
         height: 0,

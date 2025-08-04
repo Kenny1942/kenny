@@ -92,4 +92,80 @@ class MockDatabaseRepository implements DatabaseRepository {
     await Future.delayed(Duration(seconds: 3));
     _trainings.add(training);
   }
+
+  @override
+  Future<void> saveReminders(
+      String userId, List<Map<String, dynamic>> reminders) async {
+    await Future.delayed(Duration(seconds: 3));
+    // Simulate saving reminders to the database
+    print("Reminders for user $userId saved: $reminders");
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> loadReminders(String userId) async {
+    await Future.delayed(Duration(seconds: 3));
+    // Simulate loading reminders from the database
+    return [
+      {
+        'time': '08:00',
+        'active': true,
+        'days': {
+          'Mo': true,
+          'Di': true,
+          'Mi': false,
+          'Do': false,
+          'Fr': true,
+          'Sa': false,
+          'So': false,
+        },
+      },
+      {
+        'time': '20:00',
+        'active': true,
+        'days': {
+          'Mo': false,
+          'Di': false,
+          'Mi': true,
+          'Do': true,
+          'Fr': false,
+          'Sa': true,
+          'So': false,
+        },
+      },
+    ];
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getReminders(String userId) async {
+    await Future.delayed(Duration(seconds: 3));
+    // Simulate getting reminders from the database
+    return [
+      {
+        'time': '08:00',
+        'active': true,
+        'days': {
+          'Mo': true,
+          'Di': true,
+          'Mi': false,
+          'Do': false,
+          'Fr': true,
+          'Sa': false,
+          'So': false,
+        },
+      },
+      {
+        'time': '20:00',
+        'active': true,
+        'days': {
+          'Mo': false,
+          'Di': false,
+          'Mi': true,
+          'Do': true,
+          'Fr': false,
+          'Sa': true,
+          'So': false,
+        },
+      },
+    ];
+  }
 }

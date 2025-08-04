@@ -4,9 +4,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthRepository implements AuthRepository {
   @override
-  Future<void> createUserWithEmailAndPassword(String email, String pw) async {
-    await FirebaseAuth.instance
+  Future<User?> createUserWithEmailAndPassword(String email, String pw) async {
+    final credential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: pw);
+    return credential.user;
   }
 
   @override

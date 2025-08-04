@@ -12,4 +12,11 @@ abstract class DatabaseRepository {
   // Training
   Future<List<Training>> getUserTrainings(String userId);
   Future<void> addTraining(Training training);
+
+  // Reminders
+  Future<void> saveReminders(
+      String userId, List<Map<String, dynamic>> reminders);
+
+  Future<List<Map<String, dynamic>>> loadReminders(String userId);
+  Future<List<Map<String, dynamic>>> getReminders(String userId);
 }

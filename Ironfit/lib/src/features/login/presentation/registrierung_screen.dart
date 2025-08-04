@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/src/data/auth_repository.dart';
+import 'package:flutter_application_9/src/features/login/domain/user_profile.dart';
 import 'package:provider/provider.dart';
 
 class RegistrierungScreen extends StatefulWidget {
@@ -16,8 +18,27 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
 
   Future<void> _onSubmit(BuildContext context, String email, String pw) async {
     final auth = Provider.of<AuthRepository>(context, listen: false);
+    final user = await auth.createUserWithEmailAndPassword(email, pw);
 
-    await auth.createUserWithEmailAndPassword(email, pw);
+    if (user != null) {
+      final userProfile = UserProfile(
+        id: user.uid,
+        userId: user.uid,
+        name: 'Neuer Benutzer', // temporal, puedes pedirlo en pantalla
+        email: user.email,
+        dateOfBirth: DateTime(2000, 1, 1), // puedes pedirlo también
+        weight: 70.0,
+        height: 170.0,
+        gender: Gender.other,
+      );
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .set(userProfile.toMap());
+
+      print("✅ Perfil guardado con email: ${user.email}");
+    }
   }
 
   int y = 0;
