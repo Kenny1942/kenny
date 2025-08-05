@@ -116,6 +116,7 @@ class _RemindersState extends State<Reminders> {
                     final reminder = _reminders[index];
                     final hora = reminder['time'] as TimeOfDay;
                     return Card(
+                      color: const Color.fromARGB(255, 119, 103, 80),
                       margin: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 8),
                       child: Padding(
