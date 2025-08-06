@@ -94,7 +94,7 @@ class _RemindersState extends State<Reminders> {
         // zuruück button
         SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(top: 80.0, left: 8.0),
+            padding: const EdgeInsets.only(top: 90.0, left: 8.0),
             child: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: widget.back,

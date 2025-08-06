@@ -79,7 +79,7 @@ class WillkommenScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Jetzt anmelden',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
                 SizedBox(height: 50),

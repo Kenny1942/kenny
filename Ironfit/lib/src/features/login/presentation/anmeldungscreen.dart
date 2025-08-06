@@ -32,123 +32,126 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
             child: Image.asset('assets/images/logo5.png'),
           ),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 170,
-                ),
-                Text(
-                  'Anmelden',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('E-MAIL-ADRESSE')),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  onChanged: (text) {
-                    userInput1 = text;
-                  },
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: validateEmailadresse,
-                  decoration: InputDecoration(
-                    hintText: 'Gib deine E-Mail-Adresse ein',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 170,
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Align(alignment: Alignment.centerLeft, child: Text('KENNWORT')),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  onChanged: (text) {
-                    userInput2 = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Gib dein Passwort ein',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  Text(
+                    'Anmelden',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                   ),
-                ),
-                SizedBox(height: 50),
-                Text('Hast du dein Kennwort vergessen?'),
-                SizedBox(
-                  height: 50,
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      final credential = await FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                        email: userInput1.trim(),
-                        password: userInput2,
-                      );
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('E-MAIL-ADRESSE')),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    onChanged: (text) {
+                      userInput1 = text;
+                    },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: validateEmailadresse,
+                    decoration: InputDecoration(
+                      hintText: 'Gib deine E-Mail-Adresse ein',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Align(
+                      alignment: Alignment.centerLeft, child: Text('KENNWORT')),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    onChanged: (text) {
+                      userInput2 = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Gib dein Passwort ein',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Text('Hast du dein Kennwort vergessen?'),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        final credential = await FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                          email: userInput1.trim(),
+                          password: userInput2,
+                        );
 
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => HauptScreen()),
-                      );
-                    } on FirebaseAuthException catch (e) {
-                      String message = '';
-                      if (e.code == 'user-not-found') {
-                        message = 'Kein Benutzer gefunden für diese E-Mail.';
-                      } else if (e.code == 'wrong-password') {
-                        message = 'Falsches Passwort.';
-                      } else {
-                        message = 'Fehler: ${e.message}';
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => HauptScreen()),
+                        );
+                      } on FirebaseAuthException catch (e) {
+                        String message = '';
+                        if (e.code == 'user-not-found') {
+                          message = 'Kein Benutzer gefunden für diese E-Mail.';
+                        } else if (e.code == 'wrong-password') {
+                          message = 'Falsches Passwort.';
+                        } else {
+                          message = 'Fehler: ${e.message}';
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(message),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
                       }
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(message),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 194, 79, 79),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 120,
-                      vertical: 10,
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 194, 79, 79),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 130,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                    child: Text(
+                      'Jetzt Anmelden',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
-                  child: Text(
-                    'Jetzt Anmelden',
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Image.asset('assets/images/Facebook.png'),
-                SizedBox(
-                  height: 10,
-                ),
-                Image.asset('assets/images/Google.png'),
-              ],
+                  Image.asset('assets/images/Facebook.png'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Image.asset('assets/images/Google.png'),
+                ],
+              ),
             ),
           ),
         ],
