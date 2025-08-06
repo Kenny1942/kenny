@@ -96,7 +96,9 @@ class _HauptScreenState extends State<HauptScreen> {
             ),
           ),
 
-          Positioned.fill(child: _buildBody()),
+          Center(
+            child: _buildBody(),
+          )
         ],
       ),
     );

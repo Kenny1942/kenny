@@ -62,142 +62,145 @@ class _RegistrierungScreenState extends State<RegistrierungScreen> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 170,
-                ),
-                Text(
-                  'Registriere Dich',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('Anmelden mit deiner E-mail-adresse')),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  onChanged: (text) {
-                    userInput1 = text;
-                  },
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: validateEmailadresse,
-                  decoration: InputDecoration(
-                    hintText: 'Gib deine E-Mail-Adresse ein',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 170,
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Align(alignment: Alignment.centerLeft, child: Text('Kennwort')),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  onChanged: (text) {
-                    userInput2 = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Passwort',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  Text(
+                    'Registriere Dich',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                   ),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  onChanged: (text) {
-                    userInput3 = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Passwort bestätigen',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  SizedBox(
+                    height: 50,
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    // if (userInput3 == userInput2) {
-                    //   Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           HauptScreen(widget.db, widget.auth),
-                    //     ),
-                    //   );
-                    // } else {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     SnackBar(
-                    //       content:
-                    //           Text("Emailadresse oder Passwort inkorrekt!"),
-                    //       backgroundColor:
-                    //           const Color.fromARGB(255, 83, 66, 63),
-                    //     ),
-                    //   );
-                    // }
-                    await _onSubmit(
-                      context,
-                      userInput1,
-                      userInput2,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 194, 79, 79),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 120,
-                      vertical: 10,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Anmelden mit deiner E-mail-adresse')),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    onChanged: (text) {
+                      userInput1 = text;
+                    },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: validateEmailadresse,
+                    decoration: InputDecoration(
+                      hintText: 'Gib deine E-Mail-Adresse ein',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                     ),
                   ),
-                  child: Text(
-                    'Konto anlegen',
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                  SizedBox(
+                    height: 50,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset('assets/images/Facebook.png'),
-                  onTap: () {},
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset('assets/images/Google.png'),
-                  onTap: () async {
-                    final auth =
-                        Provider.of<AuthRepository>(context, listen: false);
-                    await auth.signInWithGoogle();
-                  },
-                ),
-              ],
+                  Align(
+                      alignment: Alignment.centerLeft, child: Text('Kennwort')),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    onChanged: (text) {
+                      userInput2 = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Passwort',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    onChanged: (text) {
+                      userInput3 = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Passwort bestätigen',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      // if (userInput3 == userInput2) {
+                      //   Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //       builder: (context) =>
+                      //           HauptScreen(widget.db, widget.auth),
+                      //     ),
+                      //   );
+                      // } else {
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(
+                      //       content:
+                      //           Text("Emailadresse oder Passwort inkorrekt!"),
+                      //       backgroundColor:
+                      //           const Color.fromARGB(255, 83, 66, 63),
+                      //     ),
+                      //   );
+                      // }
+                      await _onSubmit(
+                        context,
+                        userInput1,
+                        userInput2,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 194, 79, 79),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 120,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text(
+                      'Konto anlegen',
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    child: Image.asset('assets/images/Facebook.png'),
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    child: Image.asset('assets/images/Google.png'),
+                    onTap: () async {
+                      final auth =
+                          Provider.of<AuthRepository>(context, listen: false);
+                      await auth.signInWithGoogle();
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],

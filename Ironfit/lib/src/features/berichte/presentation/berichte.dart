@@ -88,7 +88,7 @@ class _FreundeState extends State<Berichte> {
               itemBuilder: (context, index) {
                 final t = trainings[index];
 
-                // Formateos
+                // Formatieren der Trainingsdaten
                 final trainingType = _formatTrainingType(t.type);
                 final formattedDate = _formatDate(t.date);
                 final formattedDuration = _formatDuration(t.duration);

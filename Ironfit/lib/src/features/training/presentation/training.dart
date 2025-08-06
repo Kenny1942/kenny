@@ -53,35 +53,42 @@ class _TrainingState extends State<Training1> {
           ),
         ),
         Positioned(
-            top: 150,
+            top: 160,
             left: 150,
-            child: Text('Training', style: const TextStyle(fontSize: 24))),
+            child: Text(widget.title, style: const TextStyle(fontSize: 24))),
         Padding(
-          padding: const EdgeInsets.only(top: 260, left: 45, right: 45),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 103, 13, 5),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Was möchten Sie eintragen?',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700),
+          padding: const EdgeInsets.only(top: 150, left: 45, right: 45),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 95,
+              ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 103, 13, 5),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                Divider(),
-                _trainingButton('Joggen', Icons.directions_run),
-                _trainingButton('Schwimmen', Icons.pool),
-                _trainingButton('Gehen', Icons.directions_walk),
-                _trainingButton('Workout', Icons.fitness_center),
-                _trainingButton('Radfahren', Icons.bike_scooter),
-              ],
-            ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Was möchten Sie eintragen?',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Divider(),
+                    _trainingButton('Joggen', Icons.directions_run),
+                    _trainingButton('Schwimmen', Icons.pool),
+                    _trainingButton('Gehen', Icons.directions_walk),
+                    _trainingButton('Workout', Icons.fitness_center),
+                    _trainingButton('Radfahren', Icons.bike_scooter),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ],
