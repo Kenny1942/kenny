@@ -1,0 +1,46 @@
+name: flutter_application_9
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  firebase_auth: ^5.6.2
+  firebase_core: ^3.15.1
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5
+  
+  cloud_firestore: ^5.6.11 
+
+  flutter_native_splash: ^2.2.4
+  google_sign_in: ^7.1.0
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+  
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#000000"
+  image: "assets/images/logo4.png"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo2.png"
+
+  
