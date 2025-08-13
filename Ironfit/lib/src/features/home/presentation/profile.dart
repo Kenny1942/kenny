@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/src/data/database_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_9/src/features/login/domain/user_profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -59,6 +60,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  Future<void> _saveUserNameLocally(String name) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_name', _nameController.text);
+  }
+
   Future<void> _saveProfile() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -80,6 +86,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {
       await db.createUserProfile(updatedProfile);
     }
+
+    await _saveUserNameLocally(updatedProfile.name);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Profil aktualisiert')),
