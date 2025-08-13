@@ -22,6 +22,10 @@ class _FreundeState extends State<Freunde> {
     return Dinamiclist(
       back: widget.back,
       title: widget.title,
+      style: const TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }

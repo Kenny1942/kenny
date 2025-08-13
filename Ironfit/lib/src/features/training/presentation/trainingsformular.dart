@@ -83,17 +83,20 @@ class _ExerciseFormState extends State<TrainingForm> {
             TextField(
               controller: _dauerController,
               decoration: const InputDecoration(labelText: 'Dauer (Min)'),
-            ),
-            TextField(
-              controller: _distanzController,
-              decoration: const InputDecoration(labelText: 'Distanz (km)'),
               keyboardType: TextInputType.number,
-              onChanged: (_) => _kalorienBerechnung(),
             ),
+            if (widget.name != 'Workout')
+              TextField(
+                controller: _distanzController,
+                decoration: const InputDecoration(labelText: 'Distanz (km)'),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                onChanged: (_) => _kalorienBerechnung(),
+              ),
             TextField(
               controller: _notesController,
               decoration: const InputDecoration(labelText: 'Notes'),
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.text,
               onChanged: (_) => _kalorienBerechnung(),
             ),
             const SizedBox(height: 12),

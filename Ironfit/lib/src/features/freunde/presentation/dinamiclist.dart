@@ -7,7 +7,11 @@ class Dinamiclist extends StatefulWidget {
   final VoidCallback back;
   final String title;
 
-  const Dinamiclist({super.key, required this.back, required this.title});
+  const Dinamiclist(
+      {super.key,
+      required this.back,
+      required this.title,
+      required TextStyle style});
 
   @override
   State<Dinamiclist> createState() => _ListaDinamicaState();

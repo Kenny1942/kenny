@@ -130,7 +130,7 @@ class _AnmeldungScreenState extends State<AnmeldungScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 194, 79, 79),
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 130,
+                        horizontal: 120,
                         vertical: 10,
                       ),
                       shape: RoundedRectangleBorder(

@@ -107,7 +107,9 @@ class _RemindersState extends State<Reminders> {
           padding: const EdgeInsets.only(top: 150.0),
           child: Column(
             children: [
-              Text(widget.title, style: const TextStyle(fontSize: 24)),
+              Text(widget.title,
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
               Expanded(
                 child: ListView.builder(

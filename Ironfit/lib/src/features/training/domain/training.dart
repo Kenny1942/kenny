@@ -35,12 +35,12 @@ class Training {
 
   factory Training.fromMap(Map<String, dynamic> map) {
     return Training(
-      id: map['id'] ?? '',
+      id:   map['id'] ?? '',
       userId: map['userId'] ?? '',
       type: TrainingType.values.byName(map['type']),
       date: (map['date'] as Timestamp).toDate(),
       duration: Duration(seconds: map['duration']),
-      caloriesBurned: (map['caloriesBurned'] as num).toDouble(),
+      caloriesBurned: (map['caloriesBurned'] as num).toDouble(),  
       notes: map['notes'] ?? '',
     );
   }

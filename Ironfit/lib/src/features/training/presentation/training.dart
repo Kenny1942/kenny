@@ -55,7 +55,9 @@ class _TrainingState extends State<Training1> {
         Positioned(
             top: 160,
             left: 150,
-            child: Text(widget.title, style: const TextStyle(fontSize: 24))),
+            child: Text(widget.title,
+                style: const TextStyle(
+                    fontSize: 24, fontWeight: FontWeight.bold))),
         Padding(
           padding: const EdgeInsets.only(top: 150, left: 45, right: 45),
           child: Column(
