@@ -24,6 +24,8 @@ class _HauptScreenState extends State<HauptScreen> {
   MenuView _currentView = MenuView.menu;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<BuildmenuState> _menuKey = GlobalKey<BuildmenuState>();
+
   @override
   Widget build(BuildContext context) {
     final db = Provider.of<DatabaseRepository>(context, listen: false);
@@ -47,7 +49,11 @@ class _HauptScreenState extends State<HauptScreen> {
                 Navigator.pop(context);
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => ProfileScreen(),
+                    builder: (_) => ProfileScreen(
+                      onUserNameUpdated: (newName) {
+                        _menuKey.currentState?.updateUserName(newName);
+                      },
+                    ),
                   ),
                 );
               },
@@ -117,6 +123,7 @@ class _HauptScreenState extends State<HauptScreen> {
       case MenuView.menu:
       default:
         return Buildmenu(
+          key: _menuKey,
           onMenuSelected: (MenuView selected) {
             setState(() {
               _currentView = selected;

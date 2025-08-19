@@ -6,7 +6,9 @@ import 'package:flutter_application_9/src/features/login/domain/user_profile.dar
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  final void Function(String)? onUserNameUpdated;
+
+  const ProfileScreen({super.key, this.onUserNameUpdated});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -63,6 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> _saveUserNameLocally(String name) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', _nameController.text);
+    if (widget.onUserNameUpdated != null) {
+      widget.onUserNameUpdated!(_nameController.text);
+    }
   }
 
   Future<void> _saveProfile() async {
@@ -88,6 +93,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     await _saveUserNameLocally(updatedProfile.name);
+
+    Navigator.pop(context, updatedProfile.name);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Profil aktualisiert')),
